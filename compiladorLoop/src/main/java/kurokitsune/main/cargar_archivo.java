@@ -5,17 +5,30 @@
  */
 package kurokitsune.main;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import javax.swing.*;
+import java.io.FileReader;
+import java.io.BufferedInputStream;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author marcos
  */
 public class cargar_archivo extends javax.swing.JPanel {
-
+    
+    private File archivo;
+    private String direccionArchivo;
     /**
      * Creates new form cargar_archivo
      */
     public cargar_archivo() {
         initComponents();
+        this.setVisible(true);
+        TextoArchivo.setEditable(false);
     }
 
     /**
@@ -28,7 +41,7 @@ public class cargar_archivo extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TextoArchivo = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
@@ -38,9 +51,9 @@ public class cargar_archivo extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TextoArchivo.setColumns(20);
+        TextoArchivo.setRows(5);
+        jScrollPane1.setViewportView(TextoArchivo);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 650, 200));
 
@@ -51,6 +64,11 @@ public class cargar_archivo extends javax.swing.JPanel {
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 870, 190));
 
         jButton1.setText("Cargar Archivo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 160, 40));
 
         jButton2.setText("Compilar");
@@ -63,15 +81,43 @@ public class cargar_archivo extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser selector = new JFileChooser("/home");
+        selector.showDialog(this, "seleccionar");
+        String elemento;
+        archivo = selector.getSelectedFile();
+        if(archivo != null){
+            
+            direccionArchivo = archivo.getParent();
+            jLabel1.setText("Ruta: " + archivo.getAbsolutePath());
+            try{
+                int pos = 0;
+                String textoinsertar;
+                FileReader contenido = new FileReader(archivo);
+                BufferedReader lee = new BufferedReader(contenido);
+                while((elemento = lee.readLine())!=null){
+                    textoinsertar = elemento + "\n";
+                    TextoArchivo.insert(textoinsertar, pos);
+                }
+                
+            }catch (FileNotFoundException ex) {
+                Logger.getLogger(cargar_archivo.class.getName()).log(Level.SEVERE, null, ex);
+            }catch (IOException ex){
+                
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea TextoArchivo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
 }
