@@ -11,8 +11,11 @@ import java_cup.runtime.Symbol;
 %eofval}
 %eofclose
 FinLinea = \r|\n\r\n
-EspacioBlanco = {FinLinea} | [ \t\f]
+EspacioBlanco =" "
+Tabulador = \t
+
 /* Numeros */
+
 Entero = 0|[1-9][1-9]*
 Real = {Entero} "." {Entero}
 
@@ -28,7 +31,10 @@ r_entero = "entero"
 r_real = "real"
 r_booleano = "booleano"
 r_nulo = "nulo"
+/* String y comentario*/
 
+String = "\""[0-9|a-z|A-Z|\']* "\""
+Comentario = "//" [0-9|a-z|A-Z|\'| \f]*  
 
 /* Comandos */
 
@@ -85,6 +91,10 @@ r_coma = ","
 r_abrir_c_c = "["
 r_cerrar_c_c = "]"
 
-/* To */
+/* Texto */
+
+Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 %%
+
+. {}
