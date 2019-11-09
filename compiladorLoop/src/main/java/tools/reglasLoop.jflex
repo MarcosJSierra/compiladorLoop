@@ -1,4 +1,4 @@
-package AnalizadorLexico
+package AnalizadorLexico;
 import java_cup.runtime.Symbol;
 %%
 %class AnalizadorLexico
@@ -24,17 +24,19 @@ Real = {Entero} "." {Entero}
 r_verdadero = "verdadero"
 r_falso = "falso"
 
+/* String y comentario*/
+
+String = "\""[0-9|a-z|A-Z|\']* "\""
+Comentario = "//" [0-9|a-z|A-Z|\'| \f| " "]*  
 
 /* Tipos Datos */
 
 r_entero = "entero"
 r_real = "real"
 r_booleano = "booleano"
+r_cadena = "cadena"
 r_nulo = "nulo"
-/* String y comentario*/
 
-String = "\""[0-9|a-z|A-Z|\']* "\""
-Comentario = "//" [0-9|a-z|A-Z|\'| \f]*  
 
 /* Comandos */
 
