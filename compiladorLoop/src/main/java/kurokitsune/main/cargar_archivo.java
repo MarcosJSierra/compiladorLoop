@@ -13,7 +13,7 @@ import java.io.BufferedInputStream;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import informacion.*;
 /**
  *
  * @author marcos
@@ -22,6 +22,7 @@ public class cargar_archivo extends javax.swing.JPanel {
     
     private File archivo;
     private String direccionArchivo;
+    private String pathArchivo;
     /**
      * Creates new form cargar_archivo
      */
@@ -72,6 +73,11 @@ public class cargar_archivo extends javax.swing.JPanel {
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 160, 40));
 
         jButton2.setText("Compilar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 160, 40));
 
         jLabel1.setText("Ruta: ");
@@ -98,6 +104,7 @@ public class cargar_archivo extends javax.swing.JPanel {
         if(archivo != null){
             
             direccionArchivo = archivo.getParent();
+            pathArchivo = archivo.getAbsolutePath();
             jLabel1.setText("Ruta: " + archivo.getAbsolutePath());
             try{
                 int pos = 0;
@@ -116,6 +123,15 @@ public class cargar_archivo extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try{
+            AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
+        } catch(java.lang.Exception el){
+            
+        } 
+    }//GEN-LAST:event_jButton2ActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,7 +18,7 @@ public class lanzadorJFlex {
         String opciones[] = new String[3];
         opciones[0] = "-d";
         opciones[2] ="src/main/java/tools/reglasLoop.jflex";
-        opciones[1] ="src/main/java/AnalizadorLexico";
+        opciones[1] ="src/main/java/kurokitsune/main";
         try{
             jflex.Main.generate(opciones);
             
