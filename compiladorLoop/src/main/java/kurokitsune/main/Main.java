@@ -17,7 +17,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         this.setVisible(true);
-        this.setSize(900,700);
+        this.setSize(900,600);
     }
 
     /**
@@ -72,7 +72,7 @@ public class Main extends javax.swing.JFrame {
         submenu = new cargar_archivo();
         this.setContentPane(submenu);
         submenu.setLocation(0, 10);
-        submenu.setSize(900,690);
+        submenu.setSize(900,590);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

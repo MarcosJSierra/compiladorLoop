@@ -12,15 +12,19 @@ package informacion;
 public class token {
     private final int col;
     private final int row;
-    public token(int col, int row, String cadena, int numero){
+    private final String cadena;
+    private int entero;
+    public static int contadorGlobal;
+    
+    public token(int col, int row, String cadena){
         this.col = col;
         this.row = row;
-        switch(numero){
-            case 1:{
-                
-                break;
-            }
-            default: break;
-        }
+        this.cadena = cadena;
     }
-}
+
+    @Override
+    public String toString() {
+        return "token{" + "col=" + col + ", row=" + row + ", cadena=" + cadena + ", entero=" + entero + '}';
+    }
+ }
+

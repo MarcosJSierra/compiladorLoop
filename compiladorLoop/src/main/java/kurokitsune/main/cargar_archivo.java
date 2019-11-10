@@ -55,13 +55,13 @@ public class cargar_archivo extends javax.swing.JPanel {
         TextoArchivo.setRows(5);
         jScrollPane1.setViewportView(TextoArchivo);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 650, 200));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 660, 340));
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 870, 190));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 870, 150));
 
         jButton1.setText("Cargar Archivo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -69,20 +69,28 @@ public class cargar_archivo extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 160, 40));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 160, 40));
 
         jButton2.setText("Compilar");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 160, 40));
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 160, 40));
 
         jLabel1.setText("Ruta: ");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 640, -1));
 
         jLabel2.setText("Notificaciones:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        TextoArchivo = new javax.swing.JTextArea();
+
+        TextoArchivo.setColumns(20);
+
+        TextoArchivo.setRows(5);
+        
+        jScrollPane1.setViewportView(TextoArchivo);
+        TextoArchivo.setEditable(false);
         JFileChooser selector = new JFileChooser("/home");
         selector.showDialog(this, "seleccionar");
         String elemento;
@@ -100,7 +108,7 @@ public class cargar_archivo extends javax.swing.JPanel {
                     textoinsertar = elemento + "\n";
                     TextoArchivo.insert(textoinsertar, pos);
                 }
-                
+                TextoArchivo.setSize(220, 85);
             }catch (FileNotFoundException ex) {
                 Logger.getLogger(cargar_archivo.class.getName()).log(Level.SEVERE, null, ex);
             }catch (IOException ex){
