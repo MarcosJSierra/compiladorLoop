@@ -21,7 +21,23 @@ public class token {
         this.row = row;
         this.cadena = cadena;
     }
+  
+    public int getCol() {
+        return col;
+    }
 
+    public int getRow() {
+        return row;
+    }
+
+    public String getCadena() {
+        return cadena;
+    }
+
+    public int getEntero() {
+        return entero;
+    }
+    
     @Override
     public String toString() {
         return "token{" + "col=" + col + ", row=" + row + ", cadena=" + cadena + ", entero=" + entero + '}';
