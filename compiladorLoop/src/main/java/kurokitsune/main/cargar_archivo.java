@@ -22,8 +22,11 @@ import informacion.*;
 public class cargar_archivo extends javax.swing.JPanel {
     
     private File archivo;
-    private String direccionArchivo;
-    private String pathArchivo;
+    public static String direccionArchivo;
+    public static File archivoToken;
+    public static PrintWriter salida;
+    public static String pathArchivo;
+    public static String nombreArchivo; 
     private JOptionPane mensaje;
     /**
      * Creates new form cargar_archivo
@@ -119,6 +122,8 @@ public class cargar_archivo extends javax.swing.JPanel {
 
                 direccionArchivo = archivo.getParent();
                 pathArchivo = archivo.getAbsolutePath();
+                nombreArchivo = archivo.getName();
+                
                 jLabel1.setText("Ruta: " + archivo.getAbsolutePath());
                 try{
                     int pos = 0;
@@ -150,11 +155,22 @@ public class cargar_archivo extends javax.swing.JPanel {
         notificaciones.setColumns(20);
         notificaciones.setRows(5);
         notificaciones.setEditable(false);
+        archivoToken  = new File(cargar_archivo.pathArchivo+".tokens");
+        System.out.println(cargar_archivo.pathArchivo+".tokens");
         this.escribirNotificacion("Iniciando Compilacion de archivo " + this.pathArchivo);
         jScrollPane2.setViewportView(notificaciones);
         try{
-            AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
+            cargar_archivo.salida = new PrintWriter(new FileWriter(archivoToken));
+            BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
+             AnalizadorLexico lex = new AnalizadorLexico(buffer);
+            //AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
+            //lex.yylex();
+            cargar_archivo.salida.close();
+            this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".tokens");
+            this.escribirNotificacion("Finalizando Compilacion de archivo " + this.pathArchivo);
         } catch(java.lang.Exception el){
+            
+        }finally{
             
         } 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -173,5 +189,8 @@ public class cargar_archivo extends javax.swing.JPanel {
     public void escribirNotificacion(String mensaje){
        
        notificaciones.insert(mensaje, 0);
+    }
+    public static void escribirToken(String cadena){
+            cargar_archivo.salida.println(cadena);
     }
 }

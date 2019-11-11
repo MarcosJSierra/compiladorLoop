@@ -40,10 +40,16 @@ public class token {
     public int getEntero() {
         return entero;
     }
-    
+
+    public int getNtabulaciones() {
+        return ntabulaciones;
+    }
+
     @Override
     public String toString() {
-        return "token{" + "col=" + col + ", row=" + row + ", cadena=" + cadena + ", entero=" + entero + '}';
+        return "token{" + "col=" + col + ", row=" + row + ", cadena=" + cadena + ", ntabulaciones=" + ntabulaciones + ", entero=" + entero + '}';
     }
+    
+    
  }
 
