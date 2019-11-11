@@ -103,7 +103,7 @@ public class cargar_archivo extends javax.swing.JPanel {
         notificaciones.setColumns(20);
         notificaciones.setRows(5);
         jScrollPane2.setViewportView(notificaciones);
-
+        notificaciones.setEditable(false);
         TextoArchivo.setEditable(false);
         JFileChooser selector = new JFileChooser("/home");
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("loop", "Loop", "LOOP");
@@ -149,6 +149,7 @@ public class cargar_archivo extends javax.swing.JPanel {
         notificaciones = new javax.swing.JTextArea();
         notificaciones.setColumns(20);
         notificaciones.setRows(5);
+        notificaciones.setEditable(false);
         this.escribirNotificacion("Iniciando Compilacion de archivo " + this.pathArchivo);
         jScrollPane2.setViewportView(notificaciones);
         try{
