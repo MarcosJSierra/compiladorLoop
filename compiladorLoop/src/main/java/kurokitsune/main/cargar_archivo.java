@@ -176,10 +176,10 @@ public class cargar_archivo extends javax.swing.JPanel {
         try{
             cargar_archivo.salida = new PrintWriter(new FileWriter(archivoToken));
             cargar_archivo.this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".\n",0);
-            //AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
-            BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
-            AnalizadorLexico lex = new AnalizadorLexico(buffer);
-            lex.yylex();
+            AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
+            //BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
+            //AnalizadorLexico lex = new AnalizadorLexico(buffer);
+            //lex.yylex();
             //aqui va el codigo de jcup
             
             
