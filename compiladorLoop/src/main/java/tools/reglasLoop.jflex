@@ -16,7 +16,6 @@ import informacion.*;
 %eofval}
 %eofclose
 %{
-        public int contadorLocal;
         String mensaje;
         private token tmp;
         private void comprobacionEspacios(){
@@ -106,7 +105,7 @@ r_incluir = "incluir"
 
 /* Simbolos */
 
-r_comparacion = ">"|"<"|"=="|"!="
+r_comparacion = ">"|"<"|"=="|"!=" | "<= " | ">="
 r_puntocoma = ";"{FinLinea} | ";"
 r_dospuntos = ":"
 r_suma = "+"
