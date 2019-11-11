@@ -25,6 +25,7 @@ public class cargar_archivo extends javax.swing.JPanel {
     public static String direccionArchivo;
     public static File archivoToken;
     public static PrintWriter salida;
+    public static int posicion;
     public static String pathArchivo;
     public static String nombreArchivo; 
     private JOptionPane mensaje;
@@ -47,22 +48,16 @@ public class cargar_archivo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TextoArchivo = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         notificaciones = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextoArchivo = new javax.swing.JTextArea();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        TextoArchivo.setColumns(20);
-        TextoArchivo.setRows(5);
-        jScrollPane1.setViewportView(TextoArchivo);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 660, 340));
 
         notificaciones.setColumns(20);
         notificaciones.setRows(5);
@@ -91,6 +86,12 @@ public class cargar_archivo extends javax.swing.JPanel {
 
         jLabel2.setText("Notificaciones:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+
+        TextoArchivo.setColumns(20);
+        TextoArchivo.setRows(5);
+        jScrollPane1.setViewportView(TextoArchivo);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 650, 320));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -115,7 +116,19 @@ public class cargar_archivo extends javax.swing.JPanel {
         int respuesta = selector.showOpenDialog(this);
         if(respuesta == JFileChooser.APPROVE_OPTION){
             
-        
+            TextoArchivo = new javax.swing.JTextArea();
+
+            TextoArchivo.setColumns(20);
+
+            TextoArchivo.setRows(5);
+
+            jScrollPane1.setViewportView(TextoArchivo);
+             notificaciones = new javax.swing.JTextArea();
+            notificaciones.setColumns(20);
+            notificaciones.setRows(5);
+            jScrollPane2.setViewportView(notificaciones);
+            notificaciones.setEditable(false);
+            TextoArchivo.setEditable(false);
             String elemento;
             archivo = selector.getSelectedFile();
             if(archivo != null){
@@ -131,8 +144,10 @@ public class cargar_archivo extends javax.swing.JPanel {
                     FileReader contenido = new FileReader(archivo);
                     BufferedReader lee = new BufferedReader(contenido);
                     while((elemento = lee.readLine())!=null){
+          
                         textoinsertar = elemento + "\n";
                         TextoArchivo.insert(textoinsertar, pos);
+                        pos = pos + textoinsertar.length();
                     }
                     TextoArchivo.setSize(220, 85);
                     jButton2.setEnabled(true);
@@ -156,21 +171,21 @@ public class cargar_archivo extends javax.swing.JPanel {
         notificaciones.setRows(5);
         notificaciones.setEditable(false);
         archivoToken  = new File(cargar_archivo.pathArchivo+".tokens");
-        System.out.println(cargar_archivo.pathArchivo+".tokens");
-        this.escribirNotificacion("Iniciando Compilacion de archivo " + this.pathArchivo);
+        cargar_archivo.escribirNotificacion("Iniciando Compilacion de archivo " + this.pathArchivo+"\n",0);
         jScrollPane2.setViewportView(notificaciones);
         try{
             cargar_archivo.salida = new PrintWriter(new FileWriter(archivoToken));
-            AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
-            //BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
-            //AnalizadorLexico lex = new AnalizadorLexico(buffer);
-            //lex.yylex();
+            cargar_archivo.this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".\n",0);
+            //AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
+            BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
+            AnalizadorLexico lex = new AnalizadorLexico(buffer);
+            lex.yylex();
             //aqui va el codigo de jcup
             
             
             cargar_archivo.salida.close();
-            this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".");
-            this.escribirNotificacion("Finalizando Compilacion de archivo " + this.pathArchivo);
+            cargar_archivo.escribirNotificacion("Finalizando Escritura de archivo " + this.pathArchivo+".tokens\n",0 );
+            cargar_archivo.escribirNotificacion("Finalizando Compilacion de archivo " + this.pathArchivo+"\n",0 );
         } catch(java.lang.Exception el){
             
         }finally{
@@ -187,13 +202,18 @@ public class cargar_archivo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea notificaciones;
+    public static javax.swing.JTextArea notificaciones;
     // End of variables declaration//GEN-END:variables
-    public void escribirNotificacion(String mensaje){
+    public static void escribirNotificacion(String mensaje, int tipo){
+       if(tipo==1)
+       notificaciones.insert(mensaje, cargar_archivo.posicion);
+       else
+       notificaciones.insert(mensaje, cargar_archivo.posicion);
        
-       notificaciones.insert(mensaje, 0);
+       cargar_archivo.posicion += mensaje.length();
     }
     public static void escribirToken(String cadena){
             cargar_archivo.salida.println(cadena);
     }
+   
 }
