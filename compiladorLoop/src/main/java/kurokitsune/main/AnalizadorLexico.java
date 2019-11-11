@@ -535,20 +535,14 @@ class AnalizadorLexico implements java_cup.runtime.Scanner {
         public int contadorLocal;
         private token tmp;
         private void comprobacionEspacios(){
-                if(contadorLocal==(token.contadorGlobal+1)){
+                if(token.contadorLocal==(token.contadorGlobal+1)){
                         token.contadorGlobal +=1;
-                        
-                }else if(contadorLocal < token.contadorGlobal){
-                       while(contadorLocal < token.contadorGlobal){
-                               tmp = new token(yycolumn, yyline, "END");
-                                //return new Symbol(sym.END, tmp);
-                                System.out.println(tmp);
-                                token.contadorGlobal-=1;
-                       }
-                }else if(contadorLocal  == token.contadorGlobal){
+                }else if(token.contadorLocal < token.contadorGlobal){
+                      token.contadorGlobal = token.contadorLocal;
+                }else if(token.contadorLocal  == token.contadorGlobal){
 
                 }else{
-                        System.out.println("error en espaciado");
+                       
                 }
         }
 
@@ -559,7 +553,7 @@ class AnalizadorLexico implements java_cup.runtime.Scanner {
    * @param   in  the java.io.Reader to read input from.
    */
   AnalizadorLexico(java.io.Reader in) {
-          contadorLocal = 0;
+  
     this.zzReader = in;
   }
 
@@ -943,7 +937,7 @@ class AnalizadorLexico implements java_cup.runtime.Scanner {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ID, tmp);
             } 
             // fall through
@@ -954,8 +948,8 @@ class AnalizadorLexico implements java_cup.runtime.Scanner {
             // fall through
           case 66: break;
           case 3: 
-            { contadorLocal=0;
-                                tmp = new token(yycolumn, yyline, "FINLINEA");
+            { token.contadorLocal=0;
+                                tmp = new token(yycolumn, yyline, "FINLINEA", token.contadorLocal);
                                 return new Symbol(sym.FINLINEA, tmp);
             } 
             // fall through
@@ -967,111 +961,111 @@ class AnalizadorLexico implements java_cup.runtime.Scanner {
           case 68: break;
           case 5: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ENTERO, tmp);
             } 
             // fall through
           case 69: break;
           case 6: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PUNTO, tmp);
             } 
             // fall through
           case 70: break;
           case 7: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.DIVISION, tmp);
             } 
             // fall through
           case 71: break;
           case 8: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.MULTI, tmp);
             } 
             // fall through
           case 72: break;
           case 9: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym., tmp);
             } 
             // fall through
           case 73: break;
           case 10: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.IGUAL, tmp);
             } 
             // fall through
           case 74: break;
           case 11: 
-            { tmp = new token(yycolumn, yyline, "FINLINEA");
+            { tmp = new token(yycolumn, yyline, "FINLINEA", token.contadorLocal);
                                 return new Symbol(sym.FINLINEA, tmp);
             } 
             // fall through
           case 75: break;
           case 12: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.DOSPUNTOS, tmp);
             } 
             // fall through
           case 76: break;
           case 13: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SUMA, tmp);
             } 
             // fall through
           case 77: break;
           case 14: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.RESTA, tmp);
             } 
             // fall through
           case 78: break;
           case 15: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.APARENTESIS, tmp);
             } 
             // fall through
           case 79: break;
           case 16: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CPARENTESIS, tmp);
             } 
             // fall through
           case 80: break;
           case 17: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PORCENTAJE, tmp);
             } 
             // fall through
           case 81: break;
           case 18: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.COMA, tmp);
             } 
             // fall through
           case 82: break;
           case 19: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ACORCHETEC, tmp);
             } 
             // fall through
           case 83: break;
           case 20: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CCORCHETEC, tmp);
             } 
             // fall through
@@ -1082,21 +1076,21 @@ class AnalizadorLexico implements java_cup.runtime.Scanner {
             // fall through
           case 85: break;
           case 22: 
-            { contadorLocal+=1;
-                                //System.out.println ("Tabulador: "+contadorLocal);
+            { token.contadorLocal+=1;
+                                //System.out.println ("Tabulador: "+token.contadorLocal);
             } 
             // fall through
           case 86: break;
           case 23: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SI, tmp);
             } 
             // fall through
           case 87: break;
           case 24: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.STRING, tmp);
             } 
             // fall through
@@ -1108,273 +1102,273 @@ class AnalizadorLexico implements java_cup.runtime.Scanner {
           case 89: break;
           case 26: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.OR, tmp);
             } 
             // fall through
           case 90: break;
           case 27: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.REAL, tmp);
             } 
             // fall through
           case 91: break;
           case 28: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.AND, tmp);
             } 
             // fall through
           case 92: break;
           case 29: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.RAIZ, tmp);
             } 
             // fall through
           case 93: break;
           case 30: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.LEER, tmp);
             } 
             // fall through
           case 94: break;
           case 31: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SENO, tmp);
             } 
             // fall through
           case 95: break;
           case 32: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SINO, tmp);
             } 
             // fall through
           case 96: break;
           case 33: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.NULO, tmp);
             } 
             // fall through
           case 97: break;
           case 34: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.DESDE, tmp);
             } 
             // fall through
           case 98: break;
           case 35: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.FALSO, tmp);
             } 
             // fall through
           case 99: break;
           case 36: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CLASE, tmp);
             } 
             // fall through
           case 100: break;
           case 37: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.HACER, tmp);
             } 
             // fall through
           case 101: break;
           case 38: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CADENA, tmp);
             } 
             // fall through
           case 102: break;
           case 39: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.COSENO, tmp);
             } 
             // fall through
           case 103: break;
           case 40: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.INCLUIR, tmp);
             } 
             // fall through
           case 104: break;
           case 41: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.METODOS, tmp);
             } 
             // fall through
           case 105: break;
           case 42: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ELIMINAR, tmp);
             } 
             // fall through
           case 106: break;
           case 43: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ESCRIBIR, tmp);
             } 
             // fall through
           case 107: break;
           case 44: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ENTONCES, tmp);
             } 
             // fall through
           case 108: break;
           case 45: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.EXTIENDE, tmp);
             } 
             // fall through
           case 109: break;
           case 46: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.DEVOLVER, tmp);
             } 
             // fall through
           case 110: break;
           case 47: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.TANGENTE, tmp);
             } 
             // fall through
           case 111: break;
           case 48: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.BOOLEANO, tmp);
             } 
             // fall through
           case 112: break;
           case 49: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.MIENTRAS, tmp);
             } 
             // fall through
           case 113: break;
           case 50: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SYMBOL, tmp);
             } 
             // fall through
           case 114: break;
           case 51: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PRIVADO, tmp);
             } 
             // fall through
           case 115: break;
           case 52: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PUBLICA, tmp);
             } 
             // fall through
           case 116: break;
           case 53: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PUBLICO, tmp);
             } 
             // fall through
           case 117: break;
           case 54: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.VERDADERO, tmp);
             } 
             // fall through
           case 118: break;
           case 55: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.LOG, tmp);
             } 
             // fall through
           case 119: break;
           case 56: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PRINCIPAL, tmp);
             } 
             // fall through
           case 120: break;
           case 57: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.INSTANCIAR, tmp);
             } 
             // fall through
           case 121: break;
           case 58: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PROTEGIDAS, tmp);
             } 
             // fall through
           case 122: break;
           case 59: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PROTEGIDO, tmp);
             } 
             // fall through
           case 123: break;
           case 60: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CADENAREAL, tmp);
             } 
             // fall through
           case 124: break;
           case 61: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CONSTRUCTOR, tmp);
             } 
             // fall through
           case 125: break;
           case 62: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PROPIEDADES, tmp);
             } 
             // fall through
           case 126: break;
           case 63: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CADENAENTERO, tmp);
             } 
             // fall through
           case 127: break;
           case 64: 
             { this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CADENABOOLEANO, tmp);
             } 
             // fall through

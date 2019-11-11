@@ -126,6 +126,8 @@ public class cargar_archivo extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        token.contadorGlobal = 0;
+        token.contadorLocal = 0;
         try{
             AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
         } catch(java.lang.Exception el){

@@ -13,12 +13,15 @@ public class token {
     private final int col;
     private final int row;
     private final String cadena;
+    private final int ntabulaciones;
     private int entero;
     public static int contadorGlobal;
+    public static int contadorLocal;
     
-    public token(int col, int row, String cadena){
+    public token(int col, int row, String cadena, int ntabulaciones){
         this.col = col;
         this.row = row;
+        this.ntabulaciones = ntabulaciones;
         this.cadena = cadena;
     }
   

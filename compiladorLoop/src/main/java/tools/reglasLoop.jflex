@@ -17,25 +17,19 @@ import informacion.*;
         public int contadorLocal;
         private token tmp;
         private void comprobacionEspacios(){
-                if(contadorLocal==(token.contadorGlobal+1)){
+                if(token.contadorLocal==(token.contadorGlobal+1)){
                         token.contadorGlobal +=1;
-                        
-                }else if(contadorLocal < token.contadorGlobal){
-                       while(contadorLocal < token.contadorGlobal){
-                               tmp = new token(yycolumn, yyline, "END");
-                                //return new Symbol(sym.END, tmp);
-                                System.out.println(tmp);
-                                token.contadorGlobal-=1;
-                       }
-                }else if(contadorLocal  == token.contadorGlobal){
+                }else if(token.contadorLocal < token.contadorGlobal){
+                      token.contadorGlobal = token.contadorLocal;
+                }else if(token.contadorLocal  == token.contadorGlobal){
 
                 }else{
-                        System.out.println("error en espaciado");
+                       
                 }
         }
 %}
 %init{
-        contadorLocal = 0;
+
 %init}
 FinLinea = \r|\n|\r\n
 
@@ -130,14 +124,14 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 %%
 {FinLinea}              {       
-                                contadorLocal=0;
-                                tmp = new token(yycolumn, yyline, "FINLINEA");
+                                token.contadorLocal=0;
+                                tmp = new token(yycolumn, yyline, "FINLINEA", token.contadorLocal);
                                 return new Symbol(sym.FINLINEA, tmp);
 
                         }
 {Tabulador}             {
-                                contadorLocal+=1;
-                                //System.out.println ("Tabulador: "+contadorLocal);
+                                token.contadorLocal+=1;
+                                //System.out.println ("Tabulador: "+token.contadorLocal);
                         }
 {Tabulador_espacio}     {
                                 
@@ -146,13 +140,13 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 {Entero}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ENTERO, tmp);
 
                         }
 {Real}                  {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.REAL, tmp);
 
                         }
@@ -160,13 +154,13 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 {r_verdadero}           {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.VERDADERO, tmp);
 
                         }
 {r_falso}               {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.FALSO, tmp);
 
                         }
@@ -175,7 +169,7 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 {String}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.STRING, tmp);
 
                         }
@@ -188,31 +182,31 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 {r_entero}              {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ENTERO, tmp);
 
                         }
 {r_real}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.REAL, tmp);
 
                         }
 {r_booleano}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.BOOLEANO, tmp);
 
                         }
 {r_cadena}              {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CADENA, tmp);
 
                         }
 {r_nulo}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.NULO, tmp);
 
                         }
@@ -221,115 +215,115 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 {r_escribir}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ESCRIBIR, tmp);
 
                         }
 {r_leer}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.LEER, tmp);
 
                         }
 {r_devolver}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.DEVOLVER, tmp);
 
                         }
 {r_cadena_entero}       {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CADENAENTERO, tmp);
 
                         }
 {r_cadena_real}         {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CADENAREAL, tmp);
 
                         }
 {r_cadena_boleano}      {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CADENABOOLEANO, tmp);
 
                         }
 {r_seno}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SENO, tmp);
 
                         }
 {r_coseno}              {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.COSENO, tmp);
 
                         }
 {r_tangente}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.TANGENTE, tmp);
 
                         }
 {r_log}                 {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.LOG, tmp);
 
                         }
 {r_raiz}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.RAIZ, tmp);
 
                         }
 {r_instanciar}          {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.INSTANCIAR, tmp);
 
                         }
 {r_eliminar}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ELIMINAR, tmp);
 
                         }
 {r_si}                  {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SI, tmp);
 
                         }
 {r_entonces}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ENTONCES, tmp);
 
                         }
 {r_sino}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SINO, tmp);
 
                         }
 {r_desde}               {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.DESDE, tmp);
 
                         }
 {r_mientras}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.MIENTRAS, tmp);
 
                         }
 {r_hacer}               {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.HACER, tmp);
 
                         }
@@ -338,79 +332,79 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 {r_clase}               {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CLASE, tmp);
 
                         }
 {r_propiedades}         {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PROPIEDADES, tmp);
 
                         }
 {r_metodos}             {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.METODOS, tmp);
 
                         }
 {r_publico}             {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PUBLICO, tmp);
 
                         }
 {r_privado}             {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PRIVADO, tmp);
 
                         }
 {r_protegido}           {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PROTEGIDO, tmp);
 
                         }
 {r_publica}             {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PUBLICA, tmp);
 
                         }
 {r_privada}             {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SYMBOL, tmp);
 
                         }
 {r_protegida}           {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PROTEGIDAS, tmp);
 
                         }
 {r_Principal}           {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PRINCIPAL, tmp);
 
                         }
 {r_constructor}         {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CONSTRUCTOR, tmp);
 
                         }
 {r_extiende}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.EXTIENDE, tmp);
 
                         }
 {r_incluir}             {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.INCLUIR, tmp);
 
                         }
@@ -419,102 +413,102 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 {r_punto}         {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PUNTO, tmp);
 
                         }
 {r_comparacion}         {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym., tmp);
 
                         }
 {r_puntocoma}           {
-                                tmp = new token(yycolumn, yyline, "FINLINEA");
+                                tmp = new token(yycolumn, yyline, "FINLINEA", token.contadorLocal);
                                 return new Symbol(sym.FINLINEA, tmp);
 
                         }
 {r_dospuntos}           {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.DOSPUNTOS, tmp);
 
                         }
 {r_suma}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.SUMA, tmp);
 
                         }
 {r_resta}               {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.RESTA, tmp);
 
                         }
 {r_multiplicacion}      {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.MULTI, tmp);
 
                         }
 {r_division}            {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.DIVISION, tmp);
 
                         }
 {r_a_parentesis}        {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.APARENTESIS, tmp);
 
                         }
 {r_c_parentesis}        {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CPARENTESIS, tmp);
 
                         }
 {r_igual}               {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.IGUAL, tmp);
 
                         }
 {r_porcentaje}          {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.PORCENTAJE, tmp);
 
                         }
 {r_coma}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.COMA, tmp);
 
                         }
 {r_abrir_c_c}           {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ACORCHETEC, tmp);
 
                         }
 {r_cerrar_c_c}          {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.CCORCHETEC, tmp);
 
                         }
 {r_and}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.AND, tmp);
 
                         }
 {r_or}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.OR, tmp);
 
                         }
@@ -523,7 +517,7 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
 
 {Identificador}         {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext());
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 return new Symbol(sym.ID, tmp);
 
                         }
