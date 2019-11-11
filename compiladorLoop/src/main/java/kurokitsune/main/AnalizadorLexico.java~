@@ -1247,7 +1247,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.ID, tmp);
             } 
             // fall through
@@ -1256,7 +1256,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.ID, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 129: break;
@@ -1280,7 +1280,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.ENTERO, tmp);
             } 
             // fall through
@@ -1289,7 +1289,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PUNTO, tmp);
             } 
             // fall through
@@ -1298,7 +1298,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.DIVISION, tmp);
             } 
             // fall through
@@ -1307,7 +1307,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.MULTI, tmp);
             } 
             // fall through
@@ -1316,7 +1316,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym., tmp);
             } 
             // fall through
@@ -1325,7 +1325,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.IGUAL, tmp);
             } 
             // fall through
@@ -1339,7 +1339,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.DOSPUNTOS, tmp);
             } 
             // fall through
@@ -1348,7 +1348,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.SUMA, tmp);
             } 
             // fall through
@@ -1357,7 +1357,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.RESTA, tmp);
             } 
             // fall through
@@ -1366,7 +1366,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.APARENTESIS, tmp);
             } 
             // fall through
@@ -1375,7 +1375,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.CPARENTESIS, tmp);
             } 
             // fall through
@@ -1384,7 +1384,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PORCENTAJE, tmp);
             } 
             // fall through
@@ -1393,7 +1393,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.COMA, tmp);
             } 
             // fall through
@@ -1402,7 +1402,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.ACORCHETEC, tmp);
             } 
             // fall through
@@ -1411,7 +1411,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                cargar_archivo.escribirToken(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.CCORCHETEC, tmp);
             } 
             // fall through
@@ -1431,7 +1431,7 @@ class AnalizadorLexico {
                                 token.contadorLocal=0;
                                 //return new Symbol(sym.FINLINEA, tmp);
                                 yybegin(YYINITIAL);
-                                System.out.println(tmp+ "estado1");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 151: break;
@@ -1439,7 +1439,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.ENTERO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 152: break;
@@ -1447,7 +1447,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PUNTO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 153: break;
@@ -1455,7 +1455,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.DIVISION, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 154: break;
@@ -1463,7 +1463,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.MULTI, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 155: break;
@@ -1471,7 +1471,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym., tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 156: break;
@@ -1479,7 +1479,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.IGUAL, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 157: break;
@@ -1488,7 +1488,7 @@ class AnalizadorLexico {
                                         token.contadorLocal = 0;
                                         //return new Symbol(sym.FINLINEA, tmp);
                                         yybegin(YYINITIAL);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 158: break;
@@ -1496,7 +1496,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.DOSPUNTOS, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 159: break;
@@ -1504,7 +1504,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.SUMA, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 160: break;
@@ -1512,7 +1512,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.RESTA, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 161: break;
@@ -1520,7 +1520,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.APARENTESIS, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 162: break;
@@ -1528,7 +1528,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.CPARENTESIS, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 163: break;
@@ -1536,7 +1536,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PORCENTAJE, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 164: break;
@@ -1544,7 +1544,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.COMA, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 165: break;
@@ -1552,7 +1552,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.ACORCHETEC, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 166: break;
@@ -1560,7 +1560,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.CCORCHETEC, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 167: break;
@@ -1579,7 +1579,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.SI, tmp);
             } 
             // fall through
@@ -1588,7 +1588,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.STRING, tmp);
             } 
             // fall through
@@ -1602,7 +1602,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                cargar_archivo.escribirToken(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.OR, tmp);
             } 
             // fall through
@@ -1623,7 +1623,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.SI, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 176: break;
@@ -1631,7 +1631,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.STRING, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 177: break;
@@ -1639,7 +1639,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.OR, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 178: break;
@@ -1647,7 +1647,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.REAL, tmp);
             } 
             // fall through
@@ -1656,7 +1656,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                cargar_archivo.escribirToken(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.AND, tmp);
             } 
             // fall through
@@ -1665,7 +1665,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.REAL, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 181: break;
@@ -1673,7 +1673,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.AND, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 182: break;
@@ -1681,7 +1681,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.RAIZ, tmp);
             } 
             // fall through
@@ -1690,7 +1690,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.LEER, tmp);
             } 
             // fall through
@@ -1699,7 +1699,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.SENO, tmp);
             } 
             // fall through
@@ -1708,7 +1708,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.SINO, tmp);
             } 
             // fall through
@@ -1717,7 +1717,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.NULO, tmp);
             } 
             // fall through
@@ -1726,7 +1726,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.RAIZ, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 188: break;
@@ -1734,7 +1734,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.LEER, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 189: break;
@@ -1742,7 +1742,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.SENO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 190: break;
@@ -1750,7 +1750,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.SINO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 191: break;
@@ -1758,7 +1758,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.NULO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 192: break;
@@ -1766,7 +1766,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.DESDE, tmp);
             } 
             // fall through
@@ -1775,7 +1775,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado1");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado1");
                                 //return new Symbol(sym.FALSO, tmp);
             } 
             // fall through
@@ -1784,7 +1784,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.CLASE, tmp);
             } 
             // fall through
@@ -1793,7 +1793,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.HACER, tmp);
             } 
             // fall through
@@ -1802,7 +1802,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.DESDE, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 197: break;
@@ -1810,7 +1810,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.FALSO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 198: break;
@@ -1818,7 +1818,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.CLASE, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 199: break;
@@ -1826,7 +1826,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.HACER, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 200: break;
@@ -1834,7 +1834,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.CADENA, tmp);
             } 
             // fall through
@@ -1843,7 +1843,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.COSENO, tmp);
             } 
             // fall through
@@ -1852,7 +1852,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.CADENA, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 203: break;
@@ -1860,7 +1860,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.COSENO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 204: break;
@@ -1868,7 +1868,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.INCLUIR, tmp);
             } 
             // fall through
@@ -1877,7 +1877,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.METODOS, tmp);
             } 
             // fall through
@@ -1886,7 +1886,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.INCLUIR, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 207: break;
@@ -1894,7 +1894,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.METODOS, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 208: break;
@@ -1902,7 +1902,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.ELIMINAR, tmp);
             } 
             // fall through
@@ -1912,7 +1912,7 @@ class AnalizadorLexico {
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 //return new Symbol(sym.ESCRIBIR, tmp);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
             } 
             // fall through
           case 210: break;
@@ -1920,7 +1920,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.ENTONCES, tmp);
             } 
             // fall through
@@ -1929,7 +1929,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.EXTIENDE, tmp);
             } 
             // fall through
@@ -1938,7 +1938,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.DEVOLVER, tmp);
             } 
             // fall through
@@ -1947,7 +1947,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.TANGENTE, tmp);
             } 
             // fall through
@@ -1956,7 +1956,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.BOOLEANO, tmp);
             } 
             // fall through
@@ -1965,7 +1965,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.MIENTRAS, tmp);
             } 
             // fall through
@@ -1974,7 +1974,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.SYMBOL, tmp);
             } 
             // fall through
@@ -1983,7 +1983,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PRIVADO, tmp);
             } 
             // fall through
@@ -1992,7 +1992,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PUBLICA, tmp);
             } 
             // fall through
@@ -2001,7 +2001,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PUBLICO, tmp);
             } 
             // fall through
@@ -2010,7 +2010,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.ELIMINAR, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 221: break;
@@ -2018,7 +2018,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.ESCRIBIR, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 222: break;
@@ -2026,7 +2026,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.ENTONCES, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 223: break;
@@ -2034,7 +2034,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.EXTIENDE, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 224: break;
@@ -2042,7 +2042,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.DEVOLVER, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 225: break;
@@ -2050,7 +2050,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.TANGENTE, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 226: break;
@@ -2058,7 +2058,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.BOOLEANO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 227: break;
@@ -2066,7 +2066,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.MIENTRAS, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 228: break;
@@ -2074,7 +2074,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.SYMBOL, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 229: break;
@@ -2082,7 +2082,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PRIVADO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 230: break;
@@ -2090,7 +2090,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PUBLICA, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 231: break;
@@ -2098,7 +2098,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PUBLICO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 232: break;
@@ -2106,7 +2106,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.VERDADERO, tmp);
             } 
             // fall through
@@ -2115,7 +2115,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.LOG, tmp);
             } 
             // fall through
@@ -2124,7 +2124,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PRINCIPAL, tmp);
             } 
             // fall through
@@ -2133,7 +2133,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.VERDADERO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 236: break;
@@ -2141,7 +2141,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.LOG, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 237: break;
@@ -2149,7 +2149,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PRINCIPAL, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 238: break;
@@ -2157,7 +2157,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.INSTANCIAR, tmp);
             } 
             // fall through
@@ -2166,7 +2166,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PROTEGIDAS, tmp);
             } 
             // fall through
@@ -2175,7 +2175,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PROTEGIDO, tmp);
             } 
             // fall through
@@ -2184,7 +2184,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.INSTANCIAR, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 242: break;
@@ -2192,7 +2192,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PROTEGIDAS, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 243: break;
@@ -2200,7 +2200,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PROTEGIDO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 244: break;
@@ -2208,7 +2208,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.CADENAREAL, tmp);
             } 
             // fall through
@@ -2217,7 +2217,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.CONSTRUCTOR, tmp);
             } 
             // fall through
@@ -2226,7 +2226,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.PROPIEDADES, tmp);
             } 
             // fall through
@@ -2235,7 +2235,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.CADENAREAL, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 248: break;
@@ -2243,7 +2243,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.CONSTRUCTOR, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 249: break;
@@ -2251,7 +2251,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.PROPIEDADES, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 250: break;
@@ -2259,7 +2259,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.CADENAENTERO, tmp);
             } 
             // fall through
@@ -2268,7 +2268,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.CADENAENTERO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 252: break;
@@ -2276,7 +2276,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
-                                System.out.println(tmp+ "estado2");
+                                cargar_archivo.escribirToken(tmp.toString()+ "estado2");
                                 //return new Symbol(sym.CADENABOOLEANO, tmp);
             } 
             // fall through
@@ -2285,7 +2285,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         //return new Symbol(sym.CADENABOOLEANO, tmp);
-                                        System.out.println(tmp+ "estado1");
+                                        cargar_archivo.escribirToken(tmp.toString()+ "estado1");
             } 
             // fall through
           case 254: break;

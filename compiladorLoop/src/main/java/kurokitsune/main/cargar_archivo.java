@@ -161,12 +161,15 @@ public class cargar_archivo extends javax.swing.JPanel {
         jScrollPane2.setViewportView(notificaciones);
         try{
             cargar_archivo.salida = new PrintWriter(new FileWriter(archivoToken));
-            BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
-             AnalizadorLexico lex = new AnalizadorLexico(buffer);
             //AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
-            //lex.yylex();
+            BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
+            AnalizadorLexico lex = new AnalizadorLexico(buffer);
+            lex.yylex();
+            //aqui va el codigo de jcup
+            
+            
             cargar_archivo.salida.close();
-            this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".tokens");
+            this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".");
             this.escribirNotificacion("Finalizando Compilacion de archivo " + this.pathArchivo);
         } catch(java.lang.Exception el){
             
