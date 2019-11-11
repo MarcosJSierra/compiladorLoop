@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import javax.swing.*;
 import java.io.FileReader;
 import java.io.BufferedInputStream;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,7 @@ public class cargar_archivo extends javax.swing.JPanel {
     private File archivo;
     private String direccionArchivo;
     private String pathArchivo;
+    private JOptionPane mensaje;
     /**
      * Creates new form cargar_archivo
      */
@@ -30,6 +32,7 @@ public class cargar_archivo extends javax.swing.JPanel {
         initComponents();
         this.setVisible(true);
         TextoArchivo.setEditable(false);
+        jButton2.setEnabled(false);
     }
 
     /**
@@ -44,7 +47,7 @@ public class cargar_archivo extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TextoArchivo = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        notificaciones = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -58,9 +61,9 @@ public class cargar_archivo extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 660, 340));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        notificaciones.setColumns(20);
+        notificaciones.setRows(5);
+        jScrollPane2.setViewportView(notificaciones);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 870, 150));
 
@@ -96,31 +99,46 @@ public class cargar_archivo extends javax.swing.JPanel {
         TextoArchivo.setRows(5);
         
         jScrollPane1.setViewportView(TextoArchivo);
+         notificaciones = new javax.swing.JTextArea();
+        notificaciones.setColumns(20);
+        notificaciones.setRows(5);
+        jScrollPane2.setViewportView(notificaciones);
+
         TextoArchivo.setEditable(false);
         JFileChooser selector = new JFileChooser("/home");
-        selector.showDialog(this, "seleccionar");
-        String elemento;
-        archivo = selector.getSelectedFile();
-        if(archivo != null){
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("loop", "Loop", "LOOP");
+       
+        selector.setFileFilter(filtro);
+        int respuesta = selector.showOpenDialog(this);
+        if(respuesta == JFileChooser.APPROVE_OPTION){
             
-            direccionArchivo = archivo.getParent();
-            pathArchivo = archivo.getAbsolutePath();
-            jLabel1.setText("Ruta: " + archivo.getAbsolutePath());
-            try{
-                int pos = 0;
-                String textoinsertar;
-                FileReader contenido = new FileReader(archivo);
-                BufferedReader lee = new BufferedReader(contenido);
-                while((elemento = lee.readLine())!=null){
-                    textoinsertar = elemento + "\n";
-                    TextoArchivo.insert(textoinsertar, pos);
+        
+            String elemento;
+            archivo = selector.getSelectedFile();
+            if(archivo != null){
+
+                direccionArchivo = archivo.getParent();
+                pathArchivo = archivo.getAbsolutePath();
+                jLabel1.setText("Ruta: " + archivo.getAbsolutePath());
+                try{
+                    int pos = 0;
+                    String textoinsertar;
+                    FileReader contenido = new FileReader(archivo);
+                    BufferedReader lee = new BufferedReader(contenido);
+                    while((elemento = lee.readLine())!=null){
+                        textoinsertar = elemento + "\n";
+                        TextoArchivo.insert(textoinsertar, pos);
+                    }
+                    TextoArchivo.setSize(220, 85);
+                    jButton2.setEnabled(true);
+                }catch (FileNotFoundException ex) {
+                    Logger.getLogger(cargar_archivo.class.getName()).log(Level.SEVERE, null, ex);
+                }catch (IOException ex){
+
                 }
-                TextoArchivo.setSize(220, 85);
-            }catch (FileNotFoundException ex) {
-                Logger.getLogger(cargar_archivo.class.getName()).log(Level.SEVERE, null, ex);
-            }catch (IOException ex){
-                
             }
+        }else{
+            JOptionPane.showMessageDialog(null,"No se selecciono ningun archivo","NOTIFICACION!!",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -128,6 +146,11 @@ public class cargar_archivo extends javax.swing.JPanel {
         // TODO add your handling code here:
         token.contadorGlobal = 0;
         token.contadorLocal = 0;
+        notificaciones = new javax.swing.JTextArea();
+        notificaciones.setColumns(20);
+        notificaciones.setRows(5);
+        this.escribirNotificacion("Iniciando Compilacion de archivo " + this.pathArchivo);
+        jScrollPane2.setViewportView(notificaciones);
         try{
             AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
         } catch(java.lang.Exception el){
@@ -144,6 +167,10 @@ public class cargar_archivo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea notificaciones;
     // End of variables declaration//GEN-END:variables
+    public void escribirNotificacion(String mensaje){
+       
+       notificaciones.insert(mensaje, 0);
+    }
 }
