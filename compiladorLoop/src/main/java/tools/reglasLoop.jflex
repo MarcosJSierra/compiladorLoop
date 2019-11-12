@@ -58,7 +58,7 @@ Comentario = "//" [0-9|a-z|A-Z|\'| \f|" "|"."|"/"|","]* | "/*" [0-9|a-z|A-Z|\'| 
 
 r_entero = "entero"
 r_real = "real"
-r_booleano = "booleano"
+r_booleano = "boleano"
 r_cadena = "cadena"
 r_nulo = "nulo"
 
@@ -119,11 +119,14 @@ r_porcentaje = "%"
 r_coma = ","
 r_abrir_c_c = "["
 r_cerrar_c_c = "]"
+r_abrir_c = "{"
+r_cerrar_c = "}"
+r_potencia = "^"
 r_punto = "."
 
 /* Texto */
 
-Identificador = [a-zA-Z]|[a-zA-Z0-9]*
+Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]*
 %xstates estado1
 %%
 <estado1>{
@@ -208,7 +211,7 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
                                         this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
-                                        return new Symbol(sym.BOOLEANO, tmp);
+                                        return new Symbol(sym.BOLEANO, tmp);
 
                                 }
         {r_cadena}              {
@@ -268,7 +271,7 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
                                         this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
-                                        return new Symbol(sym.CADENABOOLEANO, tmp);
+                                        return new Symbol(sym.CADENABOLEANO, tmp);
 
                                 }
         {r_seno}                {
@@ -473,6 +476,14 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
                                         
 
                                 }
+        {r_potencia}         {
+                                        this.comprobacionEspacios();
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        cargar_archivo.escribirToken(tmp.toString());
+                                        return new Symbol(sym.POTENCIA, tmp);
+                                        
+
+                                }
         {r_comparacion}         {
                                         this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
@@ -582,6 +593,22 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
                                         return new Symbol(sym.CCORCHETEC, tmp);
+                                        
+
+                                }
+        {r_abrir_c}           {
+                                        this.comprobacionEspacios();
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        cargar_archivo.escribirToken(tmp.toString());
+                                        return new Symbol(sym.ACORCHETE, tmp);
+                                        
+
+                                }
+        {r_cerrar_c}          {
+                                        this.comprobacionEspacios();
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        cargar_archivo.escribirToken(tmp.toString());
+                                        return new Symbol(sym.CCORCHETE, tmp);
                                         
 
                                 }
@@ -705,7 +732,7 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.BOOLEANO, tmp);
+                                return new Symbol(sym.BOLEANO, tmp);
                                 
 
                         }
@@ -772,7 +799,7 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.CADENABOOLEANO, tmp);
+                                return new Symbol(sym.CADENABOLEANO, tmp);
 
                         }
 {r_seno}                {
@@ -997,6 +1024,14 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
                                 return new Symbol(sym.PUNTO, tmp);
 
                         }
+{r_potencia}         {
+                                this.comprobacionEspacios();
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                yybegin(estado1);
+                                cargar_archivo.escribirToken(tmp.toString());
+                                return new Symbol(sym.POTENCIA, tmp);
+
+                        }
 {r_comparacion}         {
                                 this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
@@ -1105,6 +1140,22 @@ Identificador = [a-zA-Z]|[a-zA-Z0-9]*
                                 return new Symbol(sym.CCORCHETEC, tmp);
 
                         }
+{r_abrir_c}           {
+                                this.comprobacionEspacios();
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                yybegin(estado1);
+                                cargar_archivo.escribirToken(tmp.toString());
+                                return new Symbol(sym.ACORCHETE, tmp);
+
+                        }
+{r_cerrar_c}          {
+                                this.comprobacionEspacios();
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                yybegin(estado1);
+                                cargar_archivo.escribirToken(tmp.toString());
+                                return new Symbol(sym.CCORCHETE, tmp);
+
+                        }        
 {r_and}                {
                                 this.comprobacionEspacios();
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
