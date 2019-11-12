@@ -198,13 +198,13 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                         this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
-                                        return new Symbol(sym.ENTERO, tmp);
+                                        return new Symbol(sym.RENTERO, tmp);
                                 }
         {r_real}                {
                                         this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
-                                        return new Symbol(sym.REAL, tmp);
+                                        return new Symbol(sym.RREAL, tmp);
 
                                 }
         {r_booleano}            {
@@ -423,7 +423,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
 
-                                        return new Symbol(sym.SYMBOL, tmp);
+                                        return new Symbol(sym.PRIVADAS, tmp);
                                 }
         {r_protegida}           {
                                         this.comprobacionEspacios();
@@ -716,7 +716,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.ENTERO, tmp);
+                                return new Symbol(sym.RENTERO, tmp);
 
                         }
 {r_real}                {
@@ -724,7 +724,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.REAL, tmp);
+                                return new Symbol(sym.RREAL, tmp);
 
                         }
 {r_booleano}            {
@@ -970,7 +970,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.SYMBOL, tmp);
+                                return new Symbol(sym.PRIVADAS, tmp);
 
                         }
 {r_protegida}           {

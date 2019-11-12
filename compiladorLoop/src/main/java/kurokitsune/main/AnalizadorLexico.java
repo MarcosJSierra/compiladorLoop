@@ -1824,7 +1824,7 @@ class AnalizadorLexico {
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.REAL, tmp);
+                                return new Symbol(sym.RREAL, tmp);
             } 
             // fall through
           case 195: break;
@@ -1877,7 +1877,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
-                                        return new Symbol(sym.REAL, tmp);
+                                        return new Symbol(sym.RREAL, tmp);
             } 
             // fall through
           case 201: break;
@@ -1994,7 +1994,7 @@ class AnalizadorLexico {
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.ENTERO, tmp);
+                                return new Symbol(sym.RENTERO, tmp);
             } 
             // fall through
           case 215: break;
@@ -2020,7 +2020,7 @@ class AnalizadorLexico {
             { this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
-                                        return new Symbol(sym.ENTERO, tmp);
+                                        return new Symbol(sym.RENTERO, tmp);
             } 
             // fall through
           case 218: break;
@@ -2159,7 +2159,7 @@ class AnalizadorLexico {
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.SYMBOL, tmp);
+                                return new Symbol(sym.PRIVADAS, tmp);
             } 
             // fall through
           case 234: break;
@@ -2251,7 +2251,7 @@ class AnalizadorLexico {
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
 
-                                        return new Symbol(sym.SYMBOL, tmp);
+                                        return new Symbol(sym.PRIVADAS, tmp);
             } 
             // fall through
           case 245: break;
