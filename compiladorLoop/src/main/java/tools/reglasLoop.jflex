@@ -105,7 +105,7 @@ r_incluir = "incluir"
 
 /* Simbolos */
 
-r_comparacion = ">"|"<"|"=="|"!=" | "<= " | ">="
+r_comparacion = ">"|"<"|"=="|"!=" 
 r_puntocoma = ";"{FinLinea} | ";"
 r_dospuntos = ":"
 r_suma = "+"
@@ -149,14 +149,14 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
 
         {Entero}                {
                                         this.comprobacionEspacios();
-                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal, 1);
                                         cargar_archivo.escribirToken(tmp.toString());
                                         return new Symbol(sym.ENTERO, tmp);
                                         
                                 }
         {Real}                  {
                                         this.comprobacionEspacios();
-                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal, 1);
                                         cargar_archivo.escribirToken(tmp.toString());
                                         return new Symbol(sym.REAL, tmp);
 
@@ -165,14 +165,14 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
 
         {r_verdadero}           {
                                         this.comprobacionEspacios();
-                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal, 2);
                                         cargar_archivo.escribirToken(tmp.toString());
                                         return new Symbol(sym.VERDADERO, tmp);
 
                                 }
         {r_falso}               {
                                         this.comprobacionEspacios();
-                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal, 2);
                                         cargar_archivo.escribirToken(tmp.toString());
                                         return new Symbol(sym.FALSO, tmp);
 
@@ -488,7 +488,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                         this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
-                                        return new Symbol(sym., tmp);
+                                        return new Symbol(sym.COMPARACION, tmp);
                                         
 
                                 }
@@ -661,7 +661,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
 
 {Entero}                {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal, 1);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
                                 return new Symbol(sym.ENTERO, tmp);
@@ -669,7 +669,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                         }
 {Real}                  {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal, 1);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
                                 return new Symbol(sym.REAL, tmp);
@@ -679,7 +679,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
 
 {r_verdadero}           {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal, 2);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
                                 return new Symbol(sym.VERDADERO, tmp);
@@ -687,7 +687,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                         }
 {r_falso}               {
                                 this.comprobacionEspacios();
-                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal, 2);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
                                 return new Symbol(sym.FALSO, tmp);
@@ -1037,7 +1037,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym., tmp);
+                                return new Symbol(sym.COMPARACION, tmp);
 
                         }
 {r_puntocoma}           {
