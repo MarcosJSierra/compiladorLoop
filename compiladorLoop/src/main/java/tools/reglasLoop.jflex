@@ -100,6 +100,7 @@ r_privada = "privadas"
 r_protegida = "protegidas"
 r_Principal = "Principal"
 r_constructor = "constructor"
+r_destructor = "destructor"
 r_extiende = "extiende"
 r_incluir = "incluir"
 
@@ -446,6 +447,14 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
                                         return new Symbol(sym.CONSTRUCTOR, tmp);
+                                        
+
+                                }
+        {r_destructor}         {
+                                        this.comprobacionEspacios();
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        cargar_archivo.escribirToken(tmp.toString());
+                                        return new Symbol(sym.DESTRUCTOR, tmp);
                                         
 
                                 }
@@ -995,6 +1004,14 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
                                 return new Symbol(sym.CONSTRUCTOR, tmp);
+
+                        }
+{r_destructor}         {
+                                this.comprobacionEspacios();
+                                tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                yybegin(estado1);
+                                cargar_archivo.escribirToken(tmp.toString());
+                                return new Symbol(sym.DESTRUCTOR, tmp);
 
                         }
 {r_extiende}            {
