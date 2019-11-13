@@ -127,7 +127,7 @@ r_punto = "."
 
 /* Texto */
 
-Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]*
+Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"|"Á"|"É"|"Í"|"Ó"|"Ú"]|[a-z|A-Z|0-9|"_"|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ""Á"|"É"|"Í"|"Ó"|"Ú"]*
 %xstates estado1
 %%
 <estado1>{
@@ -454,7 +454,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                         this.comprobacionEspacios();
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
-                                        return new Symbol(sym.DESTRUCTOR, tmp);
+                        return new Symbol(sym.DESTRUCTOR, tmp);
                                         
 
                                 }
@@ -1011,7 +1011,7 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"]|[a-z|A-Z|0-9|"_"|"�
                                 tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                 yybegin(estado1);
                                 cargar_archivo.escribirToken(tmp.toString());
-                                return new Symbol(sym.DESTRUCTOR, tmp);
+                return new Symbol(sym.DESTRUCTOR, tmp);
 
                         }
 {r_extiende}            {

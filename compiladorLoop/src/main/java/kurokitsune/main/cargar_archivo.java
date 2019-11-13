@@ -37,6 +37,7 @@ public class cargar_archivo extends javax.swing.JPanel {
         this.setVisible(true);
         TextoArchivo.setEditable(false);
         jButton2.setEnabled(false);
+        this.setSize(900,625);
     }
 
     /**
@@ -96,19 +97,7 @@ public class cargar_archivo extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        TextoArchivo = new javax.swing.JTextArea();
-
-        TextoArchivo.setColumns(20);
-
-        TextoArchivo.setRows(5);
         
-        jScrollPane1.setViewportView(TextoArchivo);
-         notificaciones = new javax.swing.JTextArea();
-        notificaciones.setColumns(20);
-        notificaciones.setRows(5);
-        jScrollPane2.setViewportView(notificaciones);
-        notificaciones.setEditable(false);
-        TextoArchivo.setEditable(false);
         JFileChooser selector = new JFileChooser("/home");
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("loop", "Loop", "LOOP");
        
@@ -116,18 +105,16 @@ public class cargar_archivo extends javax.swing.JPanel {
         int respuesta = selector.showOpenDialog(this);
         if(respuesta == JFileChooser.APPROVE_OPTION){
             
-            TextoArchivo = new javax.swing.JTextArea();
-
-            TextoArchivo.setColumns(20);
-
-            TextoArchivo.setRows(5);
-
-            jScrollPane1.setViewportView(TextoArchivo);
-             notificaciones = new javax.swing.JTextArea();
+            notificaciones = new javax.swing.JTextArea();
             notificaciones.setColumns(20);
             notificaciones.setRows(5);
             jScrollPane2.setViewportView(notificaciones);
-            notificaciones.setEditable(false);
+            cargar_archivo.posicion = 0;
+            TextoArchivo = new javax.swing.JTextArea();
+            TextoArchivo.setColumns(20);
+            TextoArchivo.setRows(5);
+            jScrollPane1.setViewportView(TextoArchivo);
+            jScrollPane2.setViewportView(notificaciones);
             TextoArchivo.setEditable(false);
             String elemento;
             archivo = selector.getSelectedFile();
@@ -164,22 +151,22 @@ public class cargar_archivo extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        token.contadorGlobal = 0;
-        token.contadorLocal = 0;
         notificaciones = new javax.swing.JTextArea();
         notificaciones.setColumns(20);
         notificaciones.setRows(5);
-        notificaciones.setEditable(false);
+        jScrollPane2.setViewportView(notificaciones);
+        cargar_archivo.posicion = 0;
+        token.contadorGlobal = 0;
+        token.contadorLocal = 0;
         archivoToken  = new File(cargar_archivo.pathArchivo+".tokens");
         cargar_archivo.escribirNotificacion("Iniciando Compilacion de archivo " + this.pathArchivo+"\n",0);
-        jScrollPane2.setViewportView(notificaciones);
         try{
             cargar_archivo.salida = new PrintWriter(new FileWriter(archivoToken));
             cargar_archivo.this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".\n",0);
             AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
             //BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
             //AnalizadorLexico lex = new AnalizadorLexico(buffer);
-            //lex.yylex();
+            lex.yylex();
             //aqui va el codigo de jcup
             
             

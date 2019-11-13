@@ -10,6 +10,7 @@ package informacion;
  * @author marcos
  */
 public class token {
+    
     private final int col;
     private final int banderaDigito;
     private final int row;
@@ -40,7 +41,8 @@ public class token {
         this.banderaDigito = 1;
         if(digito == 1){
                 this.real = Double.parseDouble(cadena);
-                this.entero= Integer.parseInt(cadena);
+                this.entero= (int)this.real;
+                
                 if(this.real>0){
                     this.boleano = false;
                 }else{
@@ -96,7 +98,7 @@ public class token {
 
     @Override
     public String toString() {
-        return "token{" + "col=" + col + ", row=" + row + ", cadena=" + cadena + ", ntabulaciones=" + ntabulaciones + '}';
+        return "token{" + "col=" + col + ", row=" + row + ", cadena=" + cadena + ", ntabulaciones=" + ntabulaciones + "}";
     }
     
     

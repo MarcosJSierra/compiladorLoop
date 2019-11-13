@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package kurokitsune.main;
+import java.awt.Dimension;
 import javax.swing.JPanel;
 /**
  *
@@ -17,7 +18,11 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         this.setVisible(true);
-        this.setSize(900,600);
+        this.setSize(900,625);
+        Dimension dm = new Dimension();
+        dm.setSize(900, 625);
+        this.setMinimumSize(dm);
+        
     }
 
     /**
@@ -68,7 +73,7 @@ public class Main extends javax.swing.JFrame {
         submenu = new cargar_archivo();
         this.setContentPane(submenu);
         submenu.setLocation(0, 10);
-        submenu.setSize(900,590);
+        submenu.setSize(900,625);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
