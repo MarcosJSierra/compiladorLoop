@@ -51,7 +51,7 @@ expresion_parte ::= expresion:e {:
                 Nodo expresion = new Nodo(Nodo.TIPO_EXPRESION,0);
                 expresion.agregarHijo(e);
                 RESULT=expresion;
-            :} PCOMA;
+            :} ;
             
 expresion ::=  ENTERO:d {: RESULT=new Nodo(d.getEntero()); :}
         |expresion:l SUMA expresion:r {: 
