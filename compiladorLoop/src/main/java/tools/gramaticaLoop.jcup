@@ -32,6 +32,8 @@ terminal PROTEGIDAS, PRINCIAPL, CONSTRUCTOR, EXTIENDE, INCLUIR, PUNTO, POTENCIA,
 terminal SUMA, RESTA, MULTI, DIVISION, APARENTESIS, CPARENTESIS, IGUAL, PORCENTAJE, COMA, ACORCHETEC, CCORCHETEC;
 terminal ACOCHETE, CCORCHETE, AND, OR, ID;
 
+terminal token ENTERO;
+
 
 non terminal expresion_list;
 non terminal Nodo expresion, expresion_parte;
