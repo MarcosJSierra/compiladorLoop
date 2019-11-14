@@ -24,7 +24,7 @@ init with {:
     arbolSintactico = new Arbol();
 :};
 
-terminal ENTERO, REAL, VERDADERO, FALSO, STRING, RENTERO, RREAL, BOLEANO;
+terminal FINLINEA,ENTERO, REAL, VERDADERO, FALSO, STRING, RENTERO, RREAL, BOLEANO;
 terminal CADENA, NULO, ESCRIBIR, LEER, DEVOLVER, CADENAENTERO, CADENAREAL, CADENABOLEANO;
 terminal SENO, COSENO, TANGENTE, LOG, RAIZ, INSTANCIAR, ELIMINAR, SI, ENTONCES, SINO, DESDE;
 terminal MIENTRAS, HACER, CLASE, PROPIEDADES, METODOS, PUBLICO, PRIVADO, PROTEGIDO, PUBLICA, PRIVADAS;
@@ -41,38 +41,38 @@ precedence right MULTI, DIVISION;
 
 start with expresion_list;
 
-expr_list ::= expr_list expr_part:e {: 
+expresion_list ::= expresion_list expresion_parte:e {: 
                 parser.arbolSintactico.agregarHijo(e);
             :}
-            | expr_part:e {:
+            | expresion_parte:e {:
                 parser.arbolSintactico.agregarHijo(e);
             :};
-expr_part ::= expr:e {:
+expresion_parte ::= expresion:e {:
                 Nodo expresion = new Nodo(Nodo.TIPO_EXPRESION,0);
                 expresion.agregarHijo(e);
                 RESULT=expresion;
             :} PCOMA;
             
-expr ::=  ENTERO:d {: RESULT=new Nodo(d.getEntero()); :}
-        |expr:l SUMA expr:r {: 
+expresion ::=  ENTERO:d {: RESULT=new Nodo(d.getEntero()); :}
+        |expresion:l SUMA expresion:r {: 
             Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_SUMA);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
             RESULT=raiz; 
         :}
-        |expr:l RESTA expr:r {: 
+        |expresion:l RESTA expresion:r {: 
             Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_RESTA);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
             RESULT=raiz;
          :}
-        |expr:l MULTI expr:r {:
+        |expresion:l MULTI expresion:r {:
             Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_MULTI);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
             RESULT=raiz;
          :}
-        |expr:l DIVISION expr:r {:
+        |expresion:l DIVISION expresion:r {:
             Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_MULTI);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
