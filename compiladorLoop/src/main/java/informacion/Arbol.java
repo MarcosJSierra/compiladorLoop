@@ -1,4 +1,5 @@
 package informacion;
+import kurokitsune.main.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -144,8 +145,8 @@ public class Arbol {
             if (!file.exists()) {
                 file.createNewFile();
             }
-            
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            FileWriter fw = new FileWriter(cargar_archivo.direccionArchivo +"/"+ cargar_archivo.nombreArchivo + ".gv");
+            //FileWriter fw = new FileWriter(file.getAbsoluteFile());
             try (BufferedWriter bw = new BufferedWriter(fw)) {
                 bw.write(encabezado);
                 bw.newLine();
@@ -200,7 +201,8 @@ public class Arbol {
 
     private void crearGraficoPNG(File file) throws IOException {
         
-        String name = file.getAbsolutePath();
+        String name = cargar_archivo.direccionArchivo +"/"+ cargar_archivo.nombreArchivo + ".gv.jpeg";
+       // String name = file.getAbsolutePath();
         int pos = name.lastIndexOf(".");
         if (pos > 0) {
             name = name.substring(0, pos)+".jpeg";
@@ -211,7 +213,8 @@ public class Arbol {
         String[] cmd = new String[5];
         cmd[0] = graphvizPath;
         cmd[1] = tParam;
-        cmd[2] = file.getAbsolutePath();
+        //cmd[2] = file.getAbsolutePath();
+        cmd[2] = cargar_archivo.direccionArchivo+"/"+cargar_archivo.nombreArchivo+".gv";
         cmd[3] = tOParam;
         cmd[4] = name;
 
