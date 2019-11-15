@@ -7,8 +7,6 @@ public class lanzadorJCup {
         String opciones[]=new String[5];
         opciones[0]="-destdir";
         opciones[1]="src/main/java/kurokitsune/main";
-               // +File.separator+
-                //"sumadoraarbol"; //cambiar destino
         opciones[2]="-parser";
         opciones[3]="AnalizadorSintactico"; //cambiar el nombre de la clase
         opciones[4]="src/main/java/tools/gramaticaLoop.jcup";

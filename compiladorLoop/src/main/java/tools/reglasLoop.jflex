@@ -6,7 +6,7 @@ import informacion.*;
 %line
 %char
 %column
-/*%cup*/
+%cup
 %standalone
 %eofval{
         mensaje = "Finalizacion de analisis lexico\n";
@@ -127,7 +127,8 @@ r_punto = "."
 
 /* Texto */
 
-Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"|"Á"|"É"|"Í"|"Ó"|"Ú"]|[a-z|A-Z|0-9|"_"|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ""Á"|"É"|"Í"|"Ó"|"Ú"]*
+/*Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"|"Á"|"É"|"Í"|"Ó"|"Ú"]|[a-z|A-Z|0-9|"_"|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ""Á"|"É"|"Í"|"Ó"|"Ú"]**/
+Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"|"Á"|"É"|"Í"|"Ó"|"Ú"]|[a-z|A-Z|0-9]"_"|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ""Á"|"É"|"Í"|"Ó"|"Ú"]*
 %xstates estado1
 %%
 <estado1>{

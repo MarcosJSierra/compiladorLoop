@@ -70,10 +70,28 @@ public class Nodo {
     }
 
     public String getOperadorString() {
-        if (operador == OP_SUMA)
-            return "+";
-        else
-            return "-";
+        switch(operador)
+        {
+            case OP_SUMA:
+            {
+                return "+";
+            }
+            case OP_RESTA:
+            {
+               return "-"; 
+            }
+            case OP_MULTI:
+            {
+                return "*";
+            }
+            case OP_DIVISION:
+            {
+                return "/";
+            }
+            
+        }
+        return "no hallado";
+      
     }
     
     /**

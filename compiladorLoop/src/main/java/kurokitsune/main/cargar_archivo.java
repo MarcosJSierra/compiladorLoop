@@ -15,6 +15,7 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import informacion.*;
+import java_cup.runtime.Scanner;
 /**
  *
  * @author marcos
@@ -164,11 +165,17 @@ public class cargar_archivo extends javax.swing.JPanel {
             cargar_archivo.salida = new PrintWriter(new FileWriter(archivoToken));
             cargar_archivo.this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".\n",0);
             AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
+            
             //BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
             //AnalizadorLexico lex = new AnalizadorLexico(buffer);
-            lex.yylex();
-            //aqui va el codigo de jcup
-            
+            //lex.yylex();
+     
+            AnalizadorSintactico parser = new AnalizadorSintactico(lex);
+            parser.parse();
+            parser.arbolSintactico.setGraphvizPath("dot");
+            parser.arbolSintactico.recorrerArbol();
+            parser.arbolSintactico.recorrerArbol(Arbol.TIPO_RECORRIDO_GRAFO);
+          
             
             cargar_archivo.salida.close();
             cargar_archivo.escribirNotificacion("Finalizando Escritura de archivo " + this.pathArchivo+".tokens\n",0 );

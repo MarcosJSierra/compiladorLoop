@@ -90,13 +90,28 @@ public class Arbol {
         switch(nodo.getTipo()) {
             case Nodo.TIPO_OPERADOR:
                 System.out.print("Operador :");
-                if (nodo.getOperador() == Nodo.OP_SUMA)
-                    System.out.println("Suma");
-                else
-                    System.out.println("Resta");
+                switch(nodo.getOperador())
+                {
+                    case Nodo.OP_SUMA:
+            {
+                 System.out.println("Suma");
+            }break;
+            case Nodo.OP_RESTA:
+            {
+                System.out.println("Resta");
+            }break;
+            case Nodo.OP_MULTI:
+            {
+                 System.out.println("Multiplicacion");
+            }break;
+            case Nodo.OP_DIVISION:
+            {
+                 System.out.println("Division");
+            } break;     
+                }
                 break;
             case Nodo.TIPO_EXPRESION:
-                System.out.println("Nodo expresión");
+                System.out.println("Nodo expresion");
                 break;
         }
     }

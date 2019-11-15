@@ -35,47 +35,47 @@ terminal ACORCHETE, CCORCHETE, AND, OR, ID;
 terminal token ENTERO;
 
 
-non terminal expresion_list;
-non terminal Nodo expresion, expresion_parte;
+non terminal expr_list;
+non terminal Nodo expr, expr_parte;
 
 precedence left SUMA, RESTA;
 precedence right MULTI, DIVISION;
 
-start with expresion_list;
+start with expr_list;
 
-expresion_list ::= expresion_list expresion_parte:e {: 
+expr_list ::= expr_list expr_parte:e {: 
                 parser.arbolSintactico.agregarHijo(e);
             :}
-            | expresion_parte:e {:
+            | expr_parte:e {:
                 parser.arbolSintactico.agregarHijo(e);
             :};
-expresion_parte ::= expresion:e {:
+expr_parte ::= expr:e {:
                 Nodo expresion = new Nodo(Nodo.TIPO_EXPRESION,0);
                 expresion.agregarHijo(e);
                 RESULT=expresion;
-            :} ;
+            :} FINLINEA ;
             
-expresion ::=  ENTERO:d {: RESULT=new Nodo(d.getEntero()); :}
-        |expresion:l SUMA expresion:r {: 
+expr ::=  ENTERO:d {: RESULT=new Nodo(d.getEntero()); :}
+        |expr:l SUMA expr:r {: 
             Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_SUMA);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
             RESULT=raiz; 
         :}
-        |expresion:l RESTA expresion:r {: 
+        |expr:l RESTA expr:r {: 
             Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_RESTA);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
             RESULT=raiz;
          :}
-        |expresion:l MULTI expresion:r {:
+        |expr:l MULTI expr:r {:
             Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_MULTI);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
             RESULT=raiz;
          :}
-        |expresion:l DIVISION expresion:r {:
-            Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_MULTI);
+        |expr:l DIVISION expr:r {:
+            Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_DIVISION);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
             RESULT=raiz;
