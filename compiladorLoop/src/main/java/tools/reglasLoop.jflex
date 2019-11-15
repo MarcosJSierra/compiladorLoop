@@ -80,6 +80,8 @@ r_log = "logaritmo"
 r_raiz = "raiz"
 r_instanciar  = "instanciar"
 r_eliminar = "eliminar"
+r_decrementar = "decrementar"
+r_incrementar = "incrementar"
 r_si = "si"
 r_entonces = "entonces"
 r_sino = "sino"
@@ -244,6 +246,20 @@ Identificador = [a-z|A-Z|"á"|"é"|"í"|"ó"|"ú"|"ñ"|"Ñ"|"Á"|"É"|"Í"|"Ó"|
                                         tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
                                         cargar_archivo.escribirToken(tmp.toString());
                                         return new Symbol(sym.LEER, tmp);
+
+                                }
+        {r_incrementar}                {
+                                        this.comprobacionEspacios();
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        cargar_archivo.escribirToken(tmp.toString());
+                                        return new Symbol(sym.INCREMENTAR, tmp);
+
+                                }
+        {r_decrementar}                {
+                                        this.comprobacionEspacios();
+                                        tmp = new token(yycolumn, yyline, yytext(), token.contadorLocal);
+                                        cargar_archivo.escribirToken(tmp.toString());
+                                        return new Symbol(sym.DECREMENTAR, tmp);
 
                                 }
         {r_devolver}            {
