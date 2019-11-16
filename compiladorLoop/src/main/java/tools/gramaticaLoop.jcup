@@ -52,7 +52,7 @@ expr_list ::= expr_list expr_parte:e {:
             :}
             | seccion: s {:
                 parser.arbolSintactico.agregarHijo(s);
-            :)
+            :}
             ;
 seccion ::= INCLUIDOS:incl {:
                 Nodo incluid= new Nodo(Nodo.TIPO_SECCION, Nodo.SEC_INCLUDE);
@@ -61,12 +61,7 @@ seccion ::= INCLUIDOS:incl {:
             :}
             ;
 INCLUIDOS ::= INCLUIR STRING:st {:RESULT=new Nodo(st.getCadena();)} FINLINEA
-            :}
             ;
-
-
-INCLUIDOS ::= INCLUIR STRING FINLINEA
-            
 
 expr_parte ::= expr:e {:
                 Nodo expresion = new Nodo(Nodo.TIPO_EXPRESION,0);
