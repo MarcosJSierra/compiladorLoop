@@ -41,9 +41,10 @@ public class Nodo {
                 break;
             case Nodo.TIPO_OPERADOR:
                 this.operador = valor;
+                break;
             case Nodo.TIPO_SECCION:
                 this.seccion = valor;
-                
+                break;
         }
     }
     

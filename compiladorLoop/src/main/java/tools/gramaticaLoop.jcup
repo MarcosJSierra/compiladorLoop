@@ -59,7 +59,7 @@ expr_list ::= expr_list expr_parte:e {:
             ;
 seccion ::= INCLUIDOS;
 INCLUIDOS ::= INCLUIDOS INCLUIR:i(:
-             Nodo raiz = new Nodo (Nodo.TIPO_SECCION, Nodo.SEC_INCLUDE);
+             Nodo raiz = new Nodo (Nodo.TIPO_se
             :)STRING FINLINEA
             | INCLUIR STRING FINLINEA
 
