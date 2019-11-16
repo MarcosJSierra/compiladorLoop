@@ -8,72 +8,72 @@ package kurokitsune.main;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int DOSPUNTOS = 48;
-  public static final int ELIMINAR = 24;
-  public static final int PUBLICO = 34;
-  public static final int CCORCHETEC = 59;
-  public static final int DEVOLVER = 14;
-  public static final int PROTEGIDAS = 39;
-  public static final int ENTERO = 65;
-  public static final int SI = 25;
-  public static final int RESTA = 50;
-  public static final int DESDE = 28;
-  public static final int PORCENTAJE = 56;
-  public static final int ENTONCES = 26;
-  public static final int PUBLICA = 37;
-  public static final int CADENAREAL = 16;
-  public static final int RREAL = 8;
-  public static final int INSTANCIAR = 23;
-  public static final int PRINCIPAL = 40;
-  public static final int AND = 62;
-  public static final int PRIVADO = 35;
-  public static final int IGUAL = 55;
-  public static final int PRIVADAS = 38;
-  public static final int SINO = 27;
-  public static final int OR = 63;
-  public static final int RENTERO = 7;
-  public static final int EXTIENDE = 43;
-  public static final int MIENTRAS = 29;
-  public static final int RAIZ = 22;
-  public static final int CCORCHETE = 61;
-  public static final int ESCRIBIR = 12;
-  public static final int DESTRUCTOR = 42;
-  public static final int SUMA = 49;
-  public static final int CADENAENTERO = 15;
-  public static final int CPARENTESIS = 54;
-  public static final int ID = 64;
+  public static final int DOSPUNTOS = 47;
+  public static final int ELIMINAR = 23;
+  public static final int PUBLICO = 33;
+  public static final int CCORCHETEC = 58;
+  public static final int DEVOLVER = 13;
+  public static final int PROTEGIDAS = 38;
+  public static final int ENTERO = 64;
+  public static final int SI = 24;
+  public static final int RESTA = 49;
+  public static final int DESDE = 27;
+  public static final int PORCENTAJE = 55;
+  public static final int ENTONCES = 25;
+  public static final int PUBLICA = 36;
+  public static final int CADENAREAL = 15;
+  public static final int RREAL = 7;
+  public static final int INSTANCIAR = 22;
+  public static final int PRINCIPAL = 39;
+  public static final int AND = 61;
+  public static final int PRIVADO = 34;
+  public static final int IGUAL = 54;
+  public static final int PRIVADAS = 37;
+  public static final int SINO = 26;
+  public static final int OR = 62;
+  public static final int RENTERO = 6;
+  public static final int EXTIENDE = 42;
+  public static final int MIENTRAS = 28;
+  public static final int RAIZ = 21;
+  public static final int CCORCHETE = 60;
+  public static final int ESCRIBIR = 11;
+  public static final int DESTRUCTOR = 41;
+  public static final int SUMA = 48;
+  public static final int CADENAENTERO = 14;
+  public static final int CPARENTESIS = 53;
+  public static final int ID = 63;
   public static final int EOF = 0;
-  public static final int PROPIEDADES = 32;
-  public static final int CLASE = 31;
+  public static final int PROPIEDADES = 31;
+  public static final int CLASE = 30;
   public static final int error = 1;
-  public static final int ACORCHETE = 60;
-  public static final int COMA = 57;
-  public static final int NULO = 11;
-  public static final int APARENTESIS = 53;
-  public static final int CADENA = 10;
-  public static final int BOLEANO = 9;
+  public static final int ACORCHETE = 59;
+  public static final int COMA = 56;
+  public static final int NULO = 10;
+  public static final int APARENTESIS = 52;
+  public static final int CADENA = 9;
+  public static final int BOLEANO = 8;
   public static final int REAL = 3;
-  public static final int ACORCHETEC = 58;
-  public static final int POTENCIA = 46;
-  public static final int LOG = 21;
-  public static final int METODOS = 33;
-  public static final int PUNTO = 45;
-  public static final int TANGENTE = 20;
-  public static final int COSENO = 19;
-  public static final int INCLUIR = 44;
-  public static final int CONSTRUCTOR = 41;
-  public static final int SENO = 18;
+  public static final int ACORCHETEC = 57;
+  public static final int POTENCIA = 45;
+  public static final int LOG = 20;
+  public static final int METODOS = 32;
+  public static final int PUNTO = 44;
+  public static final int TANGENTE = 19;
+  public static final int COSENO = 18;
+  public static final int INCLUIR = 43;
+  public static final int CONSTRUCTOR = 40;
+  public static final int SENO = 17;
   public static final int FALSO = 5;
-  public static final int LEER = 13;
-  public static final int MULTI = 51;
-  public static final int HACER = 30;
-  public static final int PROTEGIDO = 36;
-  public static final int COMPARACION = 47;
-  public static final int STRING = 6;
+  public static final int LEER = 12;
+  public static final int MULTI = 50;
+  public static final int HACER = 29;
+  public static final int PROTEGIDO = 35;
+  public static final int STRING = 65;
+  public static final int COMPARACION = 46;
   public static final int FINLINEA = 2;
   public static final int VERDADERO = 4;
-  public static final int DIVISION = 52;
-  public static final int CADENABOLEANO = 17;
+  public static final int DIVISION = 51;
+  public static final int CADENABOLEANO = 16;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -81,7 +81,6 @@ public class sym {
   "REAL",
   "VERDADERO",
   "FALSO",
-  "STRING",
   "RENTERO",
   "RREAL",
   "BOLEANO",
@@ -140,7 +139,8 @@ public class sym {
   "AND",
   "OR",
   "ID",
-  "ENTERO"
+  "ENTERO",
+  "STRING"
   };
 }
 
