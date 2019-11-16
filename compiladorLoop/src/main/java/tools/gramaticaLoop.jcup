@@ -32,12 +32,12 @@ terminal PROTEGIDAS, PRINCIPAL, CONSTRUCTOR, DESTRUCTOR, EXTIENDE, INCLUIR, PUNT
 terminal SUMA, RESTA, MULTI, DIVISION, APARENTESIS, CPARENTESIS, IGUAL, PORCENTAJE, COMA, ACORCHETEC, CCORCHETEC;
 terminal ACORCHETE, CCORCHETE, AND, OR, ID;
 
-terminal token ENTERO, INCLUIR;
-
+terminal token ENTERO, STRING;
+terminal INCLUIDOS;
 
 non terminal expr_list;
 non terminal Nodo expr, expr_parte, seccion;
-non terminal INLCUIDOS;
+
 
 precedence left SUMA, RESTA, INCLUIDOS;
 precedence right MULTI, DIVISION;
@@ -47,9 +47,6 @@ start with expr_list;
 expr_list ::= expr_list expr_parte:e {: 
                 parser.arbolSintactico.agregarHijo(e);
             :}
-            | expr_list seccion:s (:
-                parser.arbolSintactico.agregarHijo(s);
-            :)
             |expr_parte:e {:
                 parser.arbolSintactico.agregarHijo(e);
             :}
@@ -57,11 +54,19 @@ expr_list ::= expr_list expr_parte:e {:
                 parser.arbolSintactico.agregarHijo(s);
             :)
             ;
-seccion ::= INCLUIDOS;
-INCLUIDOS ::= INCLUIDOS INCLUIR:i(:
-             Nodo raiz = new Nodo (Nodo.TIPO_se
-            :)STRING FINLINEA
-            | INCLUIR STRING FINLINEA
+seccion ::= INCLUIDOS:incl {:
+                Nodo incluid= new Nodo(Nodo.TIPO_SECCION, Nodo.SEC_INCLUDE);
+                incluid.agregarHijo(incl);
+                RESULT=incluid;
+            :}
+            ;
+INCLUIDOS ::= INCLUIR STRING:st {:RESULT=new Nodo(st.getCadena();)} FINLINEA
+            :}
+            ;
+
+
+INCLUIDOS ::= INCLUIR STRING FINLINEA
+            
 
 expr_parte ::= expr:e {:
                 Nodo expresion = new Nodo(Nodo.TIPO_EXPRESION,0);

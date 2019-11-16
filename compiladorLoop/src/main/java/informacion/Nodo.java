@@ -14,7 +14,7 @@ public class Nodo {
     public static final int TIPO_NUMERO=2;
     public static final int TIPO_OPERADOR=3;
     public static final int TIPO_SECCION=4;
-    
+     
     public static final int OP_SUMA = 10;
     public static final int OP_RESTA = 11;
     public static final int OP_MULTI = 12;
@@ -110,7 +110,7 @@ public class Nodo {
         {
             case SEC_INCLUDE:
             {
-                return "inlcuir";
+                return "incluir";
             }
             case SEC_CLASE:
             {
