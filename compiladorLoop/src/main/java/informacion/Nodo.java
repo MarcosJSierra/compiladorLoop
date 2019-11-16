@@ -8,12 +8,14 @@ public class Nodo {
     private int operador;
     private int valor;
     private int seccion;
+    private int cadena;
     private final ArrayList<Nodo> hijos;
 
     public static final int TIPO_EXPRESION=1;
     public static final int TIPO_NUMERO=2;
     public static final int TIPO_OPERADOR=3;
     public static final int TIPO_SECCION=4;
+    public static final String TIPO_CADENA=5;
      
     public static final int OP_SUMA = 10;
     public static final int OP_RESTA = 11;
@@ -52,6 +54,12 @@ public class Nodo {
         this.hijos = new ArrayList<>();
         this.tipo=TIPO_NUMERO;
         this.valor=valor;
+        this.operador=0;
+    }
+    public Nodo(String valor){
+        this.hijos = new ArrayList<>();
+        this.tipo=TIPO_CADENA;
+        this.cadena=cadena;
         this.operador=0;
     }
     
