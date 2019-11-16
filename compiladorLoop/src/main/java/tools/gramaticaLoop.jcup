@@ -39,7 +39,7 @@ non terminal expr_list;
 non terminal Nodo expr, expr_parte, seccion, INCLUIDOS;
 
 
-precedence left SUMA, RESTA, INCLUIDOS;
+precedence left SUMA, RESTA, INCLUIR;
 precedence right MULTI, DIVISION;
 
 start with expr_list;
