@@ -60,7 +60,8 @@ seccion ::= INCLUIDOS:incl {:
                 RESULT=incluid;
             :}
             ;
-INCLUIDOS ::= INCLUIR STRING:st {:RESULT=new Nodo(st.getCadena();)} FINLINEA
+INCLUIDOS ::= INCLUIR STRING:st {:RESULT=new Nodo(st.getCadena();)} 
+            FINLINEA
             ;
 
 expr_parte ::= expr:e {:
