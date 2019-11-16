@@ -174,6 +174,7 @@ public class Arbol {
 
             switch(nodo.getTipo()) {                
                 case Nodo.TIPO_EXPRESION:
+                    
                     bw.write(crearContenido(idPadre,padreNombre,contador,"expr"));
                     bw.newLine();
                     break;
@@ -188,6 +189,9 @@ public class Arbol {
                     //System.out.println("  valor:"+nodo.getValor());
                     bw.newLine();
                     break;
+                case Nodo.TIPO_SECCION:
+                    bw.write(crearContenido(idPadre,padreNombre,contador,
+                            nodo.getSeccionString()));
             }
             if (!nodo.getHijos().isEmpty()) {
                 idPadre=contador;

@@ -7,16 +7,24 @@ public class Nodo {
     private int tipo;
     private int operador;
     private int valor;
+    private int seccion;
     private final ArrayList<Nodo> hijos;
 
     public static final int TIPO_EXPRESION=1;
     public static final int TIPO_NUMERO=2;
     public static final int TIPO_OPERADOR=3;
+    public static final int TIPO_SECCION=4;
     
     public static final int OP_SUMA = 10;
     public static final int OP_RESTA = 11;
     public static final int OP_MULTI = 12;
     public static final int OP_DIVISION = 13;
+    
+    public static final int SEC_INCLUDE = 41;
+    public static final int SEC_CLASE = 42;
+    public static final int SEC_PRINCIPAL =43;
+    
+    
     /**
      *
      * @param tipo de nodo a crear
@@ -33,6 +41,9 @@ public class Nodo {
                 break;
             case Nodo.TIPO_OPERADOR:
                 this.operador = valor;
+            case Nodo.TIPO_SECCION:
+                this.seccion = valor;
+                
         }
     }
     
@@ -92,6 +103,24 @@ public class Nodo {
         }
         return "no hallado";
       
+    }
+    public String getSeccionString(){
+        switch(seccion)
+        {
+            case SEC_INCLUDE:
+            {
+                return "inlcuir";
+            }
+            case SEC_CLASE:
+            {
+                return "clase";
+            }
+            case SEC_PRINCIPAL:
+            {
+                return "principal";
+            }
+        }
+        return "no hallado";
     }
     
     /**
