@@ -54,15 +54,6 @@ expr_list ::= expr_list expr_parte:e {:
                 parser.arbolSintactico.agregarHijo(s);
             :}
             ;
-seccion ::= INCLUIDOS:incl {:
-                Nodo incluid= new Nodo(Nodo.TIPO_SECCION, Nodo.SEC_INCLUDE);
-                incluid.agregarHijo(incl);
-                RESULT=incluid;
-            :}
-            ;
-INCLUIDOS ::= INCLUIR STRING:st {:RESULT=new Nodo(st.getCadena();)} 
-            FINLINEA
-            ;
 
 expr_parte ::= expr:e {:
                 Nodo expresion = new Nodo(Nodo.TIPO_EXPRESION,0);
@@ -97,6 +88,16 @@ expr ::=  ENTERO:d {: RESULT=new Nodo(d.getEntero()); :}
             RESULT=raiz;
          :}
         ;
+        
+seccion ::= INCLUIDOS:incl {:
+                Nodo incluid= new Nodo(Nodo.TIPO_SECCION, Nodo.SEC_INCLUDE);
+                incluid.agregarHijo(incl);
+                RESULT=incluid;
+            :}
+            ;
+INCLUIDOS ::= INCLUIR STRING:st {:RESULT=new Nodo(st.getCadena();)} 
+            FINLINEA
+            ;
 
 
 
