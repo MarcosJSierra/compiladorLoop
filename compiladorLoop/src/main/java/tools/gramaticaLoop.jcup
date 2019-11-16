@@ -33,10 +33,10 @@ terminal SUMA, RESTA, MULTI, DIVISION, APARENTESIS, CPARENTESIS, IGUAL, PORCENTA
 terminal ACORCHETE, CCORCHETE, AND, OR, ID;
 
 terminal token ENTERO, STRING;
-terminal INCLUIDOS;
+
 
 non terminal expr_list;
-non terminal Nodo expr, expr_parte, seccion;
+non terminal Nodo expr, expr_parte, seccion, INCLUIDOS;
 
 
 precedence left SUMA, RESTA, INCLUIDOS;
