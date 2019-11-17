@@ -55,12 +55,14 @@ public class Nodo {
         this.tipo=TIPO_NUMERO;
         this.valor=valor;
         this.operador=0;
+        this.seccion=0;
     }
     public Nodo(String valor){
         this.hijos = new ArrayList<>();
         this.tipo=TIPO_CADENA;
         this.cadena=valor;
         this.operador=0;
+        this.seccion=0;
     }
     
     public Nodo() {
