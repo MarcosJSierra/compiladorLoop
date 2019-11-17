@@ -152,6 +152,9 @@ public class Nodo {
     public void setValor(int valor) {
         this.valor = valor;
     }
+    public String getCadena(){
+        return this.cadena;
+    }
 
     /**
      * @return the hijos

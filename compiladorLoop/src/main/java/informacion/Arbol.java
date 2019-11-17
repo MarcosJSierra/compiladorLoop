@@ -178,6 +178,10 @@ public class Arbol {
                     bw.write(crearContenido(idPadre,padreNombre,contador,"expr"));
                     bw.newLine();
                     break;
+                case Nodo.TIPO_SECCION:
+                    bw.write(crearContenido(idPadre,padreNombre, contador, nodo.getSeccionString));
+                    bw.newLine();
+                    break;
                 case Nodo.TIPO_OPERADOR:
                     bw.write(crearContenido(idPadre,padreNombre,contador,
                             nodo.getOperadorString()));
@@ -189,9 +193,9 @@ public class Arbol {
                     //System.out.println("  valor:"+nodo.getValor());
                     bw.newLine();
                     break;
-                case Nodo.TIPO_SECCION:
-                    bw.write(crearContenido(idPadre,padreNombre,contador,
-                            nodo.getSeccionString()));
+                case Nodo.TIPO_CADENA:
+                    bw.write(crearContenido(idPadre, padreNombre, contador,
+                            nodo.getCadena();))
             }
             if (!nodo.getHijos().isEmpty()) {
                 idPadre=contador;

@@ -39,7 +39,7 @@ non terminal expr_list;
 non terminal Nodo expr, expr_parte, seccion, INCLUIDOS;
 
 
-precedence left SUMA, RESTA;
+precedence left SUMA, RESTA, INCLUIR;
 precedence right MULTI, DIVISION;
 
 start with expr_list;
@@ -50,8 +50,20 @@ expr_list ::= expr_list expr_parte:e {:
             |expr_parte:e {:
                 parser.arbolSintactico.agregarHijo(e);
             :}
+            | seccion:sec{:
+                parser.arbolSintactico.agregarHijo(sec);
+            :}
             ;
-
+seccion ::= INCLUIDOS:inc{:
+                Nodo incl = new Nodo(TIPO_SECCION, Nodo.SEC_INCLUDE);
+                incl.agregarHijo(inc);
+                RESULT=incl;
+            :}
+            ;
+INCLUIDOS ::= INCLUIR STRING:st {: RESULT=new Nodo(st.getCadena()); :} 
+            FINLINEA
+            ;
+           
 expr_parte ::= expr:e {:
                 Nodo expresion = new Nodo(Nodo.TIPO_EXPRESION,0);
                 expresion.agregarHijo(e);
@@ -60,7 +72,7 @@ expr_parte ::= expr:e {:
             ;
             
 expr ::=  ENTERO:d {: RESULT=new Nodo(d.getEntero()); :}
-        |expr:l SUMA expr:r {: 
+        |expr:l SUMA expr:r {:
             Nodo raiz = new Nodo(Nodo.TIPO_OPERADOR, Nodo.OP_SUMA);
             raiz.agregarHijo(l);
             raiz.agregarHijo(r);
