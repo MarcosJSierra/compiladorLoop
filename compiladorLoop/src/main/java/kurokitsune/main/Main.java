@@ -17,6 +17,10 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        /*
+        Se define el tamaño del JFrame, JPAnel sera la variable que gracias al POO utilizaremos
+        para crear todas sus clases derivadas y mostrarlas en el mismo frame.
+        */
         this.setVisible(true);
         this.setSize(900,625);
         Dimension dm = new Dimension();
@@ -70,6 +74,10 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        /*
+        Se crea una nueva instancia de cargar_archivo, donde se encuentra la interfaz grafica, se le 
+        asignan algunos valores como la localizacion dentro del Frame y el tamaño, asi como anexarlo al panel.
+        */
         submenu = new cargar_archivo();
         this.setContentPane(submenu);
         submenu.setLocation(0, 10);

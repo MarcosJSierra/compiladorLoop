@@ -21,7 +21,22 @@ public class token {
     private final int ntabulaciones;
     public static int contadorGlobal;
     public static int contadorLocal;
+    /*
+    A continuacion se decriben el uso que se le da a cada variable en esta lista:
+        col = guarda la columna en la que es encontrado el token
+        banderaDigito = guarda si el dato es un valor numerico o no
+        row = guarda la fila en la que es encontrado un token
+        entero = guarda el valor del token en entero
+        real = guarda el valor del token como un real
+        boleano = guarda el valor del token como un boolean, es decir falso o verdadero
+        cadena = guarda el valor como una cadena string
+        ntabulaciones = guarda el numero de tabulaciones que tenia el token dado
+        contadorGlobal= variable estatica que guarda el numero de tabuladores que lleva el compilador
+        contadorLocal = variable estatica que guarda el numero de tabulacion que lleva el compilador en cada linea
+        este se convierte en 0 cada fin de linea.
     
+    
+    */
     public token(int col, int row, String cadena, int ntabulaciones){
         this.col = col;
         this.row = row;
@@ -95,6 +110,9 @@ public class token {
     public boolean isBoleano() {
         return boleano;
     }
+    /*
+    El metodo toString se utilizo para imprimir en el archivo de tokens la inforamcion basica del token
+    */
 
     @Override
     public String toString() {
