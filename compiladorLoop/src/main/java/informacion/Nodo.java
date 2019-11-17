@@ -38,15 +38,16 @@ public class Nodo {
         switch (this.tipo) {
             case Nodo.TIPO_EXPRESION:
                 break;
+            case Nodo.TIPO_SECCION:
+                this.seccion = valor;
+                break;
             case Nodo.TIPO_NUMERO:
                 this.valor = valor;
                 break;
             case Nodo.TIPO_OPERADOR:
                 this.operador = valor;
                 break;
-            case Nodo.TIPO_SECCION:
-                this.seccion = valor;
-                break;
+           
         }
     }
     

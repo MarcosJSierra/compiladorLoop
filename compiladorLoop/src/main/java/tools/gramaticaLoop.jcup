@@ -55,7 +55,7 @@ expr_list ::= expr_list expr_parte:e {:
             :}
             ;
 seccion ::= INCLUIDOS:inc{:
-                Nodo incl = new Nodo(TIPO_SECCION, Nodo.SEC_INCLUDE);
+                Nodo incl = new Nodo(Nodo.TIPO_SECCION, Nodo.SEC_INCLUDE);
                 incl.agregarHijo(inc);
                 RESULT=incl;
             :}

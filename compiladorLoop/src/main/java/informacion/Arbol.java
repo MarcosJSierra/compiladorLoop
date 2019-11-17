@@ -114,6 +114,8 @@ public class Arbol {
             case Nodo.TIPO_EXPRESION:
                 System.out.println("Nodo expresion");
                 break;
+            case Nodo.TIPO_SECCION:
+                System.out.println("Nodo seccion");       
         }
     }
     
