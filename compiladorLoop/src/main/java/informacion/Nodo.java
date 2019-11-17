@@ -8,7 +8,7 @@ public class Nodo {
     private int operador;
     private int valor;
     private int seccion;
-    private int cadena;
+    private String cadena;
     private final ArrayList<Nodo> hijos;
 
     public static final int TIPO_EXPRESION=1;
@@ -45,7 +45,7 @@ public class Nodo {
                 this.operador = valor;
                 break;
             case Nodo.TIPO_SECCION:
-                this.seccion = valor;
+                this.seccion = tipo;
                 break;
         }
     }
@@ -59,7 +59,7 @@ public class Nodo {
     public Nodo(String valor){
         this.hijos = new ArrayList<>();
         this.tipo=TIPO_CADENA;
-        this.cadena=cadena;
+        this.cadena=valor;
         this.operador=0;
     }
     
