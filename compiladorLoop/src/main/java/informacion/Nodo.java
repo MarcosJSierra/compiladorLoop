@@ -45,7 +45,7 @@ public class Nodo {
                 this.operador = valor;
                 break;
             case Nodo.TIPO_SECCION:
-                this.seccion = tipo;
+                this.seccion = valor;
                 break;
         }
     }
