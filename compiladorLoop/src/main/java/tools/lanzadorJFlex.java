@@ -19,6 +19,7 @@ public class lanzadorJFlex {
         opciones[0] = "-d";
         opciones[2] ="src/main/java/tools/reglasLoop.jflex";
         opciones[1] ="src/main/java/kurokitsune/main";
+        
         try{
             jflex.Main.generate(opciones);
             

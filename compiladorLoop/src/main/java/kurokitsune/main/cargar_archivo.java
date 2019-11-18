@@ -15,6 +15,7 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import informacion.*;
+import java_cup.runtime.Scanner;
 /**
  *
  * @author marcos
@@ -29,6 +30,22 @@ public class cargar_archivo extends javax.swing.JPanel {
     public static String pathArchivo;
     public static String nombreArchivo; 
     private JOptionPane mensaje;
+    /*
+    como se puede ver contamos con una serie de variables estaticas, la mayoria tienen por objetivo
+    el facilitar el acceso a cierta informacion desde otras clases, ya que no tenemos la necesidadde 
+    instanciar para acceder a una variable estatica, las funciones de estas son:
+        archivo = esta se utiliza para guardar la seleccion del archivo .loop al momento de desplegar el 
+                    File choser
+        direccionArchivo = Guarda la direccion de la carpeta donde se encuentra almacenado el archivo 
+        archivoToken = es el archivo creado para contener el listado de tokens encontrados.
+        salida = Tiene por funcion escribir sobre el archivo archivoToken, al utilizarse en un metodo estatico
+                la variable tambien debe ser estatica
+        posicion = se utiliza para mantener un control de la posicion en la que se debe ir escribiendo en el cuadro 
+                    de notificaciones 
+        pathArchivo = este guarda el full path del archivo seleccionado 
+        nombreArchivo = guarda unicamente el nombre del archivo.
+    Ademas de esto el TextArea de noficiaciones es estatico, esto debido a que se accede a el en una funcion estatica.
+    */
     /**
      * Creates new form cargar_archivo
      */
@@ -97,14 +114,22 @@ public class cargar_archivo extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        /*
+        se le dan algunas directivas al File Chooser como la direccion de inicio y las extenciones que debe 
+        reconocer.
+        */
         JFileChooser selector = new JFileChooser("/home");
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("loop", "Loop", "LOOP");
-       
         selector.setFileFilter(filtro);
+        /*
+        se comprueba si se ha elegido un archivo o no
+        */
         int respuesta = selector.showOpenDialog(this);
         if(respuesta == JFileChooser.APPROVE_OPTION){
-            
+            /*
+            en caso de elegir un nuevo archivo se limpia tanto el Text Area que muestra el contenido del arhcivo
+            como el textArea donde se daran las notificaciones.
+            */
             notificaciones = new javax.swing.JTextArea();
             notificaciones.setColumns(20);
             notificaciones.setRows(5);
@@ -116,26 +141,44 @@ public class cargar_archivo extends javax.swing.JPanel {
             jScrollPane1.setViewportView(TextoArchivo);
             jScrollPane2.setViewportView(notificaciones);
             TextoArchivo.setEditable(false);
+            /*
+            Se crea la variable elemento la cual se utilizara para el bufer de lectura del archivo
+            */
             String elemento;
             archivo = selector.getSelectedFile();
             if(archivo != null){
-
+                /*
+                Siempre que el arhcivo existe se actualizara la direccion del archivo y el nombre del mismo
+                */
                 direccionArchivo = archivo.getParent();
                 pathArchivo = archivo.getAbsolutePath();
                 nombreArchivo = archivo.getName();
-                
+                /*
+                se despliega la ruta en la etiqueta respectiva.
+                */
                 jLabel1.setText("Ruta: " + archivo.getAbsolutePath());
                 try{
+                    /*
+                    se indica que la posicion de inicio para escribir es 0 y se crea la variable cadena 
+                    que contendra el texto que se insertara. luego se crea el lector de archivos y el bufer
+                    del mismo.
+                    */
                     int pos = 0;
                     String textoinsertar;
                     FileReader contenido = new FileReader(archivo);
                     BufferedReader lee = new BufferedReader(contenido);
                     while((elemento = lee.readLine())!=null){
-          
+                        /*
+                        se crea la cadena, luego se escribe en el text area y se actualiza la posicion
+                        donde se debe insertar el siguiente caracter
+                        */
                         textoinsertar = elemento + "\n";
                         TextoArchivo.insert(textoinsertar, pos);
                         pos = pos + textoinsertar.length();
                     }
+                    /*
+                    se setea el tamaño y se activa el boton jButton2
+                    */
                     TextoArchivo.setSize(220, 85);
                     jButton2.setEnabled(true);
                 }catch (FileNotFoundException ex) {
@@ -146,30 +189,57 @@ public class cargar_archivo extends javax.swing.JPanel {
             }
         }else{
             JOptionPane.showMessageDialog(null,"No se selecciono ningun archivo","NOTIFICACION!!",JOptionPane.ERROR_MESSAGE);
+            /*
+            en caso de cancelar la seleccion se muestra una notificaion de que no se ha seleccionado ningun archivo. 
+            */
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        /*
+        Se limpia el area de notificaciones, esto debido a que en caso se vuelva a compilar el mismo
+        archivo , las notificaciones pueden ser distintas
+        */
         notificaciones = new javax.swing.JTextArea();
         notificaciones.setColumns(20);
         notificaciones.setRows(5);
         jScrollPane2.setViewportView(notificaciones);
         cargar_archivo.posicion = 0;
+        /*
+        se indica que empezaremos a escribir en el text area en la posicion 0 y se inicializa las 
+        variables estaticas contadorGlobal y contadorLocal
+        */
         token.contadorGlobal = 0;
         token.contadorLocal = 0;
+        /*
+        creamos el nuevo archivo de tokens y escribimos la primer notificaion en el area respectiva 
+        a traves del metodo estatico escribirNotificacion.
+        */
         archivoToken  = new File(cargar_archivo.pathArchivo+".tokens");
         cargar_archivo.escribirNotificacion("Iniciando Compilacion de archivo " + this.pathArchivo+"\n",0);
         try{
+            /*
+            
+            se crea el printwriter con el que escribiremos sobre el archivo de tokens y se notifica de esto.
+            */
             cargar_archivo.salida = new PrintWriter(new FileWriter(archivoToken));
             cargar_archivo.this.escribirNotificacion("Iniciando escritura archivo " + this.pathArchivo + ".\n",0);
             AnalizadorLexico lex = new AnalizadorLexico(new FileReader(pathArchivo)); 
+            
             //BufferedReader buffer = new BufferedReader(new FileReader(pathArchivo));
             //AnalizadorLexico lex = new AnalizadorLexico(buffer);
-            lex.yylex();
-            //aqui va el codigo de jcup
-            
-            
+            //lex.yylex();
+     
+            AnalizadorSintactico parser = new AnalizadorSintactico(lex);
+            parser.parse();
+            parser.arbolSintactico.setGraphvizPath("dot");
+            parser.arbolSintactico.recorrerArbol();
+            parser.arbolSintactico.recorrerArbol(Arbol.TIPO_RECORRIDO_GRAFO);
+          
+            /*
+            al finalizar cerramos el canal de informacion, tambien notificamos que se ha llegado al final del proceso.
+            */
             cargar_archivo.salida.close();
             cargar_archivo.escribirNotificacion("Finalizando Escritura de archivo " + this.pathArchivo+".tokens\n",0 );
             cargar_archivo.escribirNotificacion("Finalizando Compilacion de archivo " + this.pathArchivo+"\n",0 );
@@ -192,13 +262,22 @@ public class cargar_archivo extends javax.swing.JPanel {
     public static javax.swing.JTextArea notificaciones;
     // End of variables declaration//GEN-END:variables
     public static void escribirNotificacion(String mensaje, int tipo){
+        /*
+        este metodo estatico se utiliza para escribir las notificaciones en el area de notificaciones de la 
+        interfaz grafica, se recibe la cadena a escribir y el mensaje, en caso de ser tipo 0 es una 
+        notificacion normal, en caso de ser 1 es una notificacion de error,.
+        */
        if(tipo==1)
-       notificaciones.insert(mensaje, cargar_archivo.posicion);
+            notificaciones.insert(mensaje, cargar_archivo.posicion);
        else
-       notificaciones.insert(mensaje, cargar_archivo.posicion);
+            notificaciones.insert(mensaje, cargar_archivo.posicion);
        
        cargar_archivo.posicion += mensaje.length();
     }
+    /*
+    el metodo escribir token tiene por objetivo escribir sobre el archivo .token que se genera cada token encontrado
+    esto con el fin de llevar el control de los tokens utilizados.
+    */
     public static void escribirToken(String cadena){
             cargar_archivo.salida.println(cadena);
     }
