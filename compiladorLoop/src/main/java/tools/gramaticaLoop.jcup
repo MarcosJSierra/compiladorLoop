@@ -1,0 +1,461 @@
+package kurokitsune.main;
+import informacion.*;
+
+import java_cup.runtime.Symbol;
+
+action code {:
+:}
+
+parser code {:
+    
+    public Arbol arbolSintactico;
+
+
+    @Override
+    public void syntax_error(Symbol sy) {
+        token t=(token)sy.value;
+        done_parsing();
+        report_error("Error sintactico cerca de \""+ t.getCadena()+"\" ["+t.getRow()+" : "+t.getCol()+"]",null);
+        
+    }
+:}
+
+init with {: 
+    arbolSintactico = new Arbol();
+:};
+
+terminal FINLINEA, VERDADERO, FALSO;
+terminal NULO, ESCRIBIR, LEER, DEVOLVER, CADENAENTERO, CADENAREAL, CADENABOLEANO;
+terminal SENO, COSENO, TANGENTE, LOG, RAIZ, INSTANCIAR, ELIMINAR, SI, ENTONCES, SINO, DESDE;
+terminal MIENTRAS, HACER, CLASE, PROPIEDADES, METODOS, PUBLICO, PRIVADO, PROTEGIDO;
+terminal CONSTRUCTOR, DESTRUCTOR, EXTIENDE, INCLUIR, PUNTO, POTENCIA, COMPARACION, DOSPUNTOS;
+terminal SUMA, RESTA, MULTI, DIVISION,  PORCENTAJE, COMA, ACORCHETEC, CCORCHETEC;
+terminal ACORCHETE, CCORCHETE, AND, OR, INCREMENTAR, DECREMENTAR;
+terminal PUBLICA, PRIVADAS, PROTEGIDAS, PRINCIPAL;
+
+
+terminal token ENTERO, STRING, ID, APARENTESIS, CPARENTESIS, IGUAL, REAL;
+terminal RENTERO, RREAL, BOLEANO, CADENA;
+
+non terminal S;
+non terminal Nodo INCLUIDOS, INCLU, CLASESFUNCIONES, PRODCLASE, ARGUMENTOS, CODIGO, INICIACIONVARIABLE; 
+non terminal Nodo PARAMETROS_EXP, TIPODATO, DPROPIEDADES, PROP_EXP, DMETODOS, MET_EXP, PRODFUNCION, PPRINCIPAL;
+
+precedence left SUMA, RESTA, COMA;
+precedence left RENTERO, RREAL, BOLEANO, CADENA, CONSTRUCTOR, METODOS, NULO, CLASE;
+precedence right MULTI, DIVISION, ID, PROPIEDADES, DESTRUCTOR;
+
+start with S;
+
+S ::= /*INCLUIDOS:inc {: 
+                    parser.arbolSintactico.agregarHijo(inc);    
+                    :}
+    | CLASESFUNCIONES:cf{:
+                    parser.arbolSintactico.agregarHijo(cf);
+                    :}
+    | INCLUIDOS:inc CLASESFUNCIONES:cf{:
+                    parser.arbolSintactico.agregarHijo(inc);
+                    parser.arbolSintactico.agregarHijo(cf);
+                    :}
+    | */INCLUIDOS:inc CLASESFUNCIONES:cf PPRINCIPAL:p {:
+                    parser.arbolSintactico.agregarHijo(inc);
+                    parser.arbolSintactico.agregarHijo(cf);
+                    parser.arbolSintactico.agregarHijo(p);
+                    :}
+    |
+    INCLUIDOS:inc CLASESFUNCIONES:cf  {:
+                    parser.arbolSintactico.agregarHijo(inc);
+                    parser.arbolSintactico.agregarHijo(cf);
+                    parser.arbolSintactico.agregarHijo(new Nodo("PRINCIPAL"));
+                    :}
+    | CLASESFUNCIONES:cf PPRINCIPAL:p {:
+                    parser.arbolSintactico.agregarHijo(cf);
+                    parser.arbolSintactico.agregarHijo(p);
+                    
+                    :}
+    |INCLUIDOS:inc PPRINCIPAL:p {:
+                    parser.arbolSintactico.agregarHijo(inc);
+                    parser.arbolSintactico.agregarHijo(p);
+                    :}
+    | PPRINCIPAL:p {:
+                    parser.arbolSintactico.agregarHijo(new Nodo("PRINCIPAL"));
+                    :}
+    
+      ;
+/*INCLUIDOS Y INCLU, son las expresiones en la gramatica que controlan el area de  carga*/
+/*de bibliotecas externas.*/  
+INCLUIDOS ::=   INCLUIDOS:in INCLU:i {:
+                Nodo incl= in;
+                incl.agregarHijo(i);
+                RESULT=incl;
+                :}
+            |   INCLU:i{:
+                Nodo incl = new Nodo("INCLUIR");
+                incl.agregarHijo(i);
+                RESULT=incl;
+            :}
+            ;
+INCLU   ::= INCLUIR STRING:st FINLINEA{:
+                String temp = st.getCadena().substring(1, st.getCadena().length()-1);
+                Nodo strng = new Nodo (temp);
+                RESULT=strng;
+            :}
+            ;
+
+/*ClASEFUNCIONES verifica el orden correcto de producciones en  la creacion de clases*/
+/*desde el nombre, los parametros, las funciones o metodos, etc*/
+
+CLASESFUNCIONES ::= CLASESFUNCIONES:cfun PRODCLASE:pcl  {:
+                    Nodo prodc = cfun;
+                    prodc.agregarHijo(pcl);
+                    RESULT=prodc;
+                    :}
+    /*| CLASESFUNCIONES PRODFUNCION*/
+    | PRODCLASE: pcl {:
+                    Nodo prodc = new Nodo("CLASES");
+                    prodc.agregarHijo(pcl);
+                    RESULT=prodc;
+                    :}
+    /*| PRODFUNCION;*/
+    ;
+
+PRODCLASE ::= /*PRODCLASE CLASE ID ARGUMENTOS FINLINEA DPROPIEDADES DMETODOS
+    | PRODCLASE CLASE ID ARGUMENTOS FINLINEA DMETODOS
+    | PRODCLASE CLASE ID ARGUMENTOS FINLINEA DPROPIEDADES 
+    | PRODCLASE CLASE ID ARGUMENTOS FINLINEA 
+    |*/CLASE ID:ident ARGUMENTOS:argu FINLINEA DPROPIEDADES:dprop DMETODOS:dmet{:
+                Nodo prop = new Nodo("NOMBRE");
+                prop.agregarHijo(new Nodo(ident.getCadena()));
+                Nodo arg = new Nodo("PARAMETROS");
+                arg.agregarHijo(argu);
+                Nodo propi = new Nodo("PROPIEDADES");
+                propi.agregarHijo(dprop);
+                Nodo met = new Nodo("METODOS");
+                met.agregarHijo(dmet);
+                Nodo prodcl = new Nodo("CLASE");
+                prodcl.agregarHijo(prop);
+                if(argu!=null)
+                    prodcl.agregarHijo(arg);
+                prodcl.agregarHijo(propi);
+                prodcl.agregarHijo(met);
+                RESULT=prodcl;
+                :}
+    | CLASE ID:ident ARGUMENTOS:argu FINLINEA DMETODOS:dmet {:
+                Nodo prop = new Nodo("NOMBRE");
+                prop.agregarHijo(new Nodo(ident.getCadena()));
+                Nodo arg = new Nodo("PARAMETROS");
+                arg.agregarHijo(argu);
+                Nodo met = new Nodo("METODOS");
+                met.agregarHijo(dmet);
+                Nodo prodcl = new Nodo("CLASE");
+                prodcl.agregarHijo(prop);
+                if(argu!=null)
+                    prodcl.agregarHijo(arg);
+                prodcl.agregarHijo(met);
+                RESULT=prodcl;
+    
+                :}
+    | CLASE ID:ident ARGUMENTOS:argu FINLINEA DPROPIEDADES:dprop {:
+                Nodo prop = new Nodo("NOMBRE");
+                prop.agregarHijo(new Nodo(ident.getCadena()));
+                Nodo arg = new Nodo("PARAMETROS");
+                arg.agregarHijo(argu);
+                Nodo propi = new Nodo("PROPIEDADES");
+                propi.agregarHijo(dprop);
+                Nodo prodcl = new Nodo("CLASE");
+                prodcl.agregarHijo(prop);
+                if(argu!=null)
+                    prodcl.agregarHijo(arg);
+                prodcl.agregarHijo(propi);
+                RESULT=prodcl;
+    
+            :}
+    |  CLASE ID:ident ARGUMENTOS:argu FINLINEA {:
+            Nodo prop = new Nodo("NOMBRE");
+            prop.agregarHijo(new Nodo(ident.getCadena()));
+            Nodo arg = new Nodo("PARAMETROS");
+            arg.agregarHijo(argu);
+            Nodo prodcl = new Nodo("CLASE");
+            prodcl.agregarHijo(prop);
+            if(argu!=null)
+                prodcl.agregarHijo(arg);
+            RESULT=prodcl;
+         
+         :} 
+    ;
+ARGUMENTOS ::=  
+      APARENTESIS:apar CPARENTESIS:cpar
+            {:RESULT=null;:}
+        |   APARENTESIS PARAMETROS_EXP:parex CPARENTESIS
+            {:
+            RESULT=parex;
+            :}
+            ; 
+
+PARAMETROS_EXP::=TIPODATO ID:id 
+                {: RESULT=new Nodo(id.getCadena());:}
+            |   PARAMETROS_EXP:peizq COMA PARAMETROS_EXP:peder
+                {:
+                 Nodo arg = peizq;
+                 arg.agregarHijo(peder);
+                 RESULT=arg;
+                :}
+                ;        
+
+TIPODATO ::= RENTERO
+            | RREAL
+            | BOLEANO
+            | CADENA
+            ;
+
+/*DPROPIEDADES genera verifica la adición de propiedades a una clase definida*/
+DPROPIEDADES::= DPROPIEDADES:dprop PROP_EXP:pexp
+                {:
+                Nodo dpropi = dprop;
+                dpropi.agregarHijo(pexp);
+                RESULT=dpropi;
+                :}
+            |   PROP_EXP:pexp 
+                {:
+                RESULT=pexp;
+                :}
+            ; 
+
+PROP_EXP::= PROPIEDADES PUBLICA DOSPUNTOS FINLINEA TIPODATO ID:id FINLINEA PROP_EXP:prope 
+    {:
+        Nodo prote = new Nodo("PUBLICAS");
+        prote.agregarHijo(new Nodo(id.getCadena()));
+        prote.agregarHijo(prope);
+        RESULT=prote;
+    :}
+    |  PROPIEDADES PRIVADAS DOSPUNTOS FINLINEA TIPODATO ID:id FINLINEA PROP_EXP:prope
+    {:
+        Nodo prote = new Nodo("PRIVADAS");
+        prote.agregarHijo(new Nodo(id.getCadena()));
+        prote.agregarHijo(prope);
+        RESULT=prote;
+    :}  
+    |  PROPIEDADES PROTEGIDAS DOSPUNTOS FINLINEA TIPODATO ID:id FINLINEA PROP_EXP:prope
+    {:
+        Nodo prote = new Nodo("PROTEGIDAS");
+        prote.agregarHijo(new Nodo(id.getCadena()));
+        prote.agregarHijo(prope);
+        RESULT=prote;
+    :} 
+    | PROPIEDADES PUBLICA DOSPUNTOS FINLINEA TIPODATO ID:id FINLINEA
+    {:
+        Nodo prote = new Nodo("PUBLICAS");
+        prote.agregarHijo(new Nodo(id.getCadena()));
+        RESULT=prote;
+    :}   
+    | PROPIEDADES PRIVADAS DOSPUNTOS FINLINEA TIPODATO ID:id FINLINEA
+    {:
+        Nodo prote = new Nodo("PRIVADAS");
+        prote.agregarHijo(new Nodo(id.getCadena()));
+        RESULT=prote;
+    :}  
+    | PROPIEDADES PROTEGIDAS DOSPUNTOS FINLINEA TIPODATO ID:id FINLINEA
+    {:
+        Nodo prote = new Nodo("PROTEGIDAS");
+        prote.agregarHijo(new Nodo(id.getCadena()));
+        RESULT=prote;
+    :} 
+    | TIPODATO ID:id FINLINEA PROP_EXP:prope
+    {:
+        Nodo propi = new Nodo(id.getCadena());
+        propi.agregarHijo(prope);
+        RESULT=propi;
+    :}
+    | TIPODATO ID:id FINLINEA
+    {:
+        RESULT=new Nodo(id.getCadena());
+    :}
+    ;
+DMETODOS::= DMETODOS:dmet MET_EXP:mexp
+                {:
+                Nodo dpropi = dmet;
+                dpropi.agregarHijo(mexp);
+                RESULT=dpropi;
+                :}
+            |   MET_EXP:mexp 
+                {:
+                RESULT=mexp;
+                :}
+            ; 
+MET_EXP ::= METODOS PUBLICO DOSPUNTOS FINLINEA PRODFUNCION:pfun MET_EXP:mexp 
+    {:
+        Nodo met = new Nodo("PUBLICOS");
+        met.agregarHijo(pfun);
+        met.agregarHijo(mexp);
+        RESULT=met;
+    :}
+    | METODOS PRIVADO DOSPUNTOS FINLINEA PRODFUNCION:pfun MET_EXP:mexp
+    {:
+        Nodo met = new Nodo("PRIVADOS");
+        met.agregarHijo(pfun);
+        met.agregarHijo(mexp);
+        RESULT=met;
+    :} 
+    | METODOS PROTEGIDO DOSPUNTOS FINLINEA PRODFUNCION:pfun MET_EXP:mexp 
+    {:
+        Nodo met = new Nodo("PROTEGIDOS");
+        met.agregarHijo(pfun);
+        met.agregarHijo(mexp);
+        RESULT=met;
+    :}
+    | METODOS PUBLICO DOSPUNTOS FINLINEA PRODFUNCION:pfun
+    {:
+        Nodo met = new Nodo("PUBLICOS");
+        met.agregarHijo(pfun);
+        RESULT=met;
+    :}
+    | METODOS PRIVADO DOSPUNTOS FINLINEA PRODFUNCION:pfun
+    {:
+        Nodo met = new Nodo("PRIVADOS");
+        met.agregarHijo(pfun);
+        RESULT=met;
+    :}
+    | METODOS PROTEGIDO DOSPUNTOS FINLINEA PRODFUNCION:pfun
+    {:
+        Nodo met = new Nodo("PROTEGIDOS");
+        met.agregarHijo(pfun);
+        RESULT=met;
+    :}
+    ;
+
+PRODFUNCION ::= CONSTRUCTOR ARGUMENTOS:argu FINLINEA CODIGO:cd PRODFUNCION:pfun
+    {:
+        Nodo prfun = new Nodo("CONSTRUCTOR");
+        Nodo arg = new Nodo("PARAMETROS");
+        arg.agregarHijo(argu);
+        Nodo proce = new Nodo("PROCESOS");
+        proce.agregarHijo(cd);
+        if(argu!=null)
+            prfun.agregarHijo(arg);
+        prfun.agregarHijo(cd);
+        prfun.agregarHijo(pfun);
+        RESULT=prfun;
+    :}
+    | DESTRUCTOR ARGUMENTOS:argu FINLINEA CODIGO:cd PRODFUNCION:pfun
+    {:
+        Nodo prfun = new Nodo("DESTRUCTOR");
+        Nodo arg = new Nodo("PARAMETROS");
+        arg.agregarHijo(argu);
+        Nodo proce = new Nodo("PROCESOS");
+        proce.agregarHijo(cd);
+        if(argu!=null)
+            prfun.agregarHijo(arg);
+        prfun.agregarHijo(cd);
+        prfun.agregarHijo(pfun);
+        RESULT=prfun;
+    :}
+    | TIPODATO ID:ident ARGUMENTOS:argu FINLINEA CODIGO:cd PRODFUNCION:pfun
+    {:
+        Nodo prfun = new Nodo(ident.getCadena());
+        Nodo arg = new Nodo("PARAMETROS");
+        arg.agregarHijo(argu);
+        Nodo proce = new Nodo("PROCESOS");
+        proce.agregarHijo(cd);
+        if(argu!=null)
+            prfun.agregarHijo(arg);
+        prfun.agregarHijo(cd);
+        prfun.agregarHijo(pfun);
+        RESULT=prfun;
+    :}
+    | NULO ID:ident ARGUMENTOS:argu FINLINEA CODIGO:cd PRODFUNCION:pfun
+    {:
+        Nodo prfun = new Nodo(ident.getCadena());
+        Nodo arg = new Nodo("PARAMETROS");
+        arg.agregarHijo(argu);
+        Nodo proce = new Nodo("PROCESOS");
+        proce.agregarHijo(cd);
+        if(argu!=null)
+            prfun.agregarHijo(arg);
+        prfun.agregarHijo(cd);
+        prfun.agregarHijo(pfun);
+        RESULT=prfun;
+    :}
+    | CONSTRUCTOR ARGUMENTOS:argu FINLINEA CODIGO:cd
+    {:
+        Nodo prfun = new Nodo("CONSTRUCTOR");
+        Nodo arg = new Nodo("PARAMETROS");
+        arg.agregarHijo(argu);
+        Nodo proce = new Nodo("PROCESOS");
+        proce.agregarHijo(cd);
+        if(argu!=null)
+            prfun.agregarHijo(arg);
+        prfun.agregarHijo(cd);
+        RESULT=prfun;
+    :}
+    | DESTRUCTOR ARGUMENTOS:argu FINLINEA CODIGO:cd
+    {:
+        Nodo prfun = new Nodo("DESTRUCTOR");
+        Nodo arg = new Nodo("PARAMETROS");
+        arg.agregarHijo(argu);
+        Nodo proce = new Nodo("PROCESOS");
+        proce.agregarHijo(cd);
+        if(argu!=null)
+            prfun.agregarHijo(arg);
+        prfun.agregarHijo(cd);
+        RESULT=prfun;
+    :}
+    | TIPODATO ID:ident ARGUMENTOS:argu FINLINEA CODIGO:cd
+    {:
+        Nodo prfun = new Nodo(ident.getCadena());
+        Nodo arg = new Nodo("PARAMETROS");
+        arg.agregarHijo(argu);
+        Nodo proce = new Nodo("PROCESOS");
+        proce.agregarHijo(cd);
+        if(argu!=null)
+            prfun.agregarHijo(arg);
+        prfun.agregarHijo(cd);
+        RESULT=prfun;
+    :}
+    | NULO ID:ident ARGUMENTOS:argu FINLINEA CODIGO:cd
+    {:
+        Nodo prfun = new Nodo(ident.getCadena());
+        Nodo arg = new Nodo("PARAMETROS");
+        arg.agregarHijo(argu);
+        Nodo proce = new Nodo("PROCESOS");
+        proce.agregarHijo(cd);
+        if(argu!=null)
+            prfun.agregarHijo(arg);
+        prfun.agregarHijo(cd);
+        RESULT=prfun;
+    :}
+    ;
+CODIGO ::= {:RESULT=new Nodo("CODIGO");:};
+/*INICIACIONVARIABLE:iniv CODIGO:cd  
+            {:
+            Nodo inivar = new Nodo("CODIGO");
+            inivar.agregarHijo(iniv);
+            inivar.agregarHijo(cd);
+            RESULT=inivar;
+            :}
+        | INICIACIONVARIABLE:iniv 
+            {:
+            Nodo inivar = new Nodo("CODIGO");
+            inivar.agregarHijo(iniv);
+            RESULT=inivar;
+
+            :}
+        ;
+
+INICIACIONVARIABLE ::= TIPODATO ID:ident IGUAL:eq REAL:rl 
+                        {:
+                            Nodo ini = new Nodo("VARIABLE");
+                            ini.agregarHijo(new Nodo(ident.getCadena()+" "+eq.getCadena()+" "+rl.getCadena()));
+                            RESULT=ini;
+                        :}
+                    | TIPODATO ID:ident IGUAL:eq ENTERO:en 
+                        {:
+                            Nodo ini = new Nodo("VARIABLE");
+                            ini.agregarHijo(new Nodo(ident.getCadena()+" "+eq.getCadena()+" "+en.getCadena()));
+                            RESULT=ini;
+                        :}
+                    ;*/
+/*PPRINCIPAL ::=  RENTERO PRINCIPAL APARENTESIS CPARENTESIS FINLINEA 
+                {:
+                RESULT=new Nodo("PRINCIPAL");
+                :}
+                ;*/

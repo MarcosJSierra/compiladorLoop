@@ -1,0 +1,13 @@
+digraph arbol{
+{0 [label="raiz"]}->{1 [label="expr"]}
+{1}->{2 [label="*"]}
+{2}->{3 [label="4"]}
+{2}->{4 [label="8"]}
+{0 [label="raiz"]}->{5 [label="expr"]}
+{5}->{6 [label="+"]}
+{6}->{7 [label="-"]}
+{7}->{8 [label="5"]}
+{7}->{9 [label="9"]}
+{6}->{10 [label="6"]}
+
+}
