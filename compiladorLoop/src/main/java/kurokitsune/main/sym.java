@@ -8,83 +8,80 @@ package kurokitsune.main;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int DOSPUNTOS = 47;
-  public static final int ELIMINAR = 23;
-  public static final int PUBLICO = 33;
-  public static final int CCORCHETEC = 58;
-  public static final int DEVOLVER = 13;
-  public static final int PROTEGIDAS = 38;
-  public static final int ENTERO = 64;
-  public static final int SI = 24;
-  public static final int RESTA = 49;
-  public static final int DESDE = 27;
-  public static final int PORCENTAJE = 55;
-  public static final int ENTONCES = 25;
-  public static final int PUBLICA = 36;
-  public static final int CADENAREAL = 15;
-  public static final int RREAL = 7;
-  public static final int INSTANCIAR = 22;
-  public static final int PRINCIPAL = 39;
-  public static final int AND = 61;
-  public static final int PRIVADO = 34;
-  public static final int IGUAL = 54;
-  public static final int PRIVADAS = 37;
-  public static final int SINO = 26;
-  public static final int OR = 62;
-  public static final int RENTERO = 6;
-  public static final int EXTIENDE = 42;
-  public static final int MIENTRAS = 28;
-  public static final int RAIZ = 21;
-  public static final int CCORCHETE = 60;
-  public static final int ESCRIBIR = 11;
-  public static final int DESTRUCTOR = 41;
-  public static final int SUMA = 48;
-  public static final int CADENAENTERO = 14;
-  public static final int CPARENTESIS = 53;
-  public static final int ID = 63;
+  public static final int DOSPUNTOS = 38;
+  public static final int ELIMINAR = 18;
+  public static final int PUBLICO = 28;
+  public static final int CCORCHETEC = 46;
+  public static final int DEVOLVER = 8;
+  public static final int PROTEGIDAS = 55;
+  public static final int ENTERO = 57;
+  public static final int SI = 19;
+  public static final int RESTA = 40;
+  public static final int DESDE = 22;
+  public static final int PORCENTAJE = 43;
+  public static final int ENTONCES = 20;
+  public static final int PUBLICA = 53;
+  public static final int CADENAREAL = 10;
+  public static final int RREAL = 65;
+  public static final int DECREMENTAR = 52;
+  public static final int INSTANCIAR = 17;
+  public static final int INCREMENTAR = 51;
+  public static final int PRINCIPAL = 56;
+  public static final int AND = 49;
+  public static final int PRIVADO = 29;
+  public static final int IGUAL = 62;
+  public static final int PRIVADAS = 54;
+  public static final int SINO = 21;
+  public static final int RENTERO = 64;
+  public static final int OR = 50;
+  public static final int MIENTRAS = 23;
+  public static final int EXTIENDE = 33;
+  public static final int RAIZ = 16;
+  public static final int CCORCHETE = 48;
+  public static final int ESCRIBIR = 6;
+  public static final int DESTRUCTOR = 32;
+  public static final int SUMA = 39;
+  public static final int CADENAENTERO = 9;
+  public static final int CPARENTESIS = 61;
+  public static final int ID = 59;
   public static final int EOF = 0;
-  public static final int PROPIEDADES = 31;
-  public static final int CLASE = 30;
+  public static final int PROPIEDADES = 26;
+  public static final int CLASE = 25;
   public static final int error = 1;
-  public static final int ACORCHETE = 59;
-  public static final int COMA = 56;
-  public static final int NULO = 10;
-  public static final int APARENTESIS = 52;
-  public static final int CADENA = 9;
-  public static final int BOLEANO = 8;
-  public static final int REAL = 3;
-  public static final int ACORCHETEC = 57;
-  public static final int POTENCIA = 45;
-  public static final int LOG = 20;
-  public static final int METODOS = 32;
-  public static final int PUNTO = 44;
-  public static final int TANGENTE = 19;
-  public static final int COSENO = 18;
-  public static final int INCLUIR = 43;
-  public static final int CONSTRUCTOR = 40;
-  public static final int SENO = 17;
-  public static final int FALSO = 5;
-  public static final int LEER = 12;
-  public static final int MULTI = 50;
-  public static final int HACER = 29;
-  public static final int PROTEGIDO = 35;
-  public static final int STRING = 65;
-  public static final int COMPARACION = 46;
+  public static final int ACORCHETE = 47;
+  public static final int COMA = 44;
+  public static final int NULO = 5;
+  public static final int CADENA = 67;
+  public static final int APARENTESIS = 60;
+  public static final int BOLEANO = 66;
+  public static final int REAL = 63;
+  public static final int ACORCHETEC = 45;
+  public static final int POTENCIA = 36;
+  public static final int LOG = 15;
+  public static final int METODOS = 27;
+  public static final int PUNTO = 35;
+  public static final int TANGENTE = 14;
+  public static final int COSENO = 13;
+  public static final int INCLUIR = 34;
+  public static final int CONSTRUCTOR = 31;
+  public static final int SENO = 12;
+  public static final int FALSO = 4;
+  public static final int LEER = 7;
+  public static final int MULTI = 41;
+  public static final int HACER = 24;
+  public static final int PROTEGIDO = 30;
+  public static final int STRING = 58;
+  public static final int COMPARACION = 37;
   public static final int FINLINEA = 2;
-  public static final int VERDADERO = 4;
-  public static final int DIVISION = 51;
-  public static final int CADENABOLEANO = 16;
+  public static final int VERDADERO = 3;
+  public static final int DIVISION = 42;
+  public static final int CADENABOLEANO = 11;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "FINLINEA",
-  "REAL",
   "VERDADERO",
   "FALSO",
-  "RENTERO",
-  "RREAL",
-  "BOLEANO",
-  "CADENA",
   "NULO",
   "ESCRIBIR",
   "LEER",
@@ -111,10 +108,6 @@ public class sym {
   "PUBLICO",
   "PRIVADO",
   "PROTEGIDO",
-  "PUBLICA",
-  "PRIVADAS",
-  "PROTEGIDAS",
-  "PRINCIPAL",
   "CONSTRUCTOR",
   "DESTRUCTOR",
   "EXTIENDE",
@@ -127,9 +120,6 @@ public class sym {
   "RESTA",
   "MULTI",
   "DIVISION",
-  "APARENTESIS",
-  "CPARENTESIS",
-  "IGUAL",
   "PORCENTAJE",
   "COMA",
   "ACORCHETEC",
@@ -138,9 +128,23 @@ public class sym {
   "CCORCHETE",
   "AND",
   "OR",
-  "ID",
+  "INCREMENTAR",
+  "DECREMENTAR",
+  "PUBLICA",
+  "PRIVADAS",
+  "PROTEGIDAS",
+  "PRINCIPAL",
   "ENTERO",
-  "STRING"
+  "STRING",
+  "ID",
+  "APARENTESIS",
+  "CPARENTESIS",
+  "IGUAL",
+  "REAL",
+  "RENTERO",
+  "RREAL",
+  "BOLEANO",
+  "CADENA"
   };
 }
 

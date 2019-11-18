@@ -115,7 +115,14 @@ public class Arbol {
                 System.out.println("Nodo expresion");
                 break;
             case Nodo.TIPO_SECCION:
-                System.out.println("Nodo seccion");       
+                System.out.println("Nodo seccion");
+                break;  
+            case Nodo.TIPO_CADENA:
+                System.out.println("Nodo cadena");
+                break;   
+            case Nodo.TIPO_PROPIEDADES:
+                System.out.println("Nodo propiedad");
+                break;  
         }
     }
     
@@ -153,7 +160,7 @@ public class Arbol {
                 bw.write(encabezado);
                 bw.newLine();
                 for (Nodo hijo : raiz.getHijos()) {
-                    recorridoGrafo(hijo, bw, 0, "raiz");
+                    recorridoGrafo(hijo, bw, 0, "LOOP");
                 }
                 bw.newLine();
                 bw.write("}");
@@ -184,6 +191,10 @@ public class Arbol {
                     bw.write(crearContenido(idPadre,padreNombre, contador, nodo.getSeccionString()));
                     bw.newLine();
                     break;
+                case Nodo.TIPO_PROPIEDADES:
+                    bw.write(crearContenido(idPadre,padreNombre,contador,nodo.getPropiedadString()));
+                    bw.newLine();
+                    break;
                 case Nodo.TIPO_OPERADOR:
                     bw.write(crearContenido(idPadre,padreNombre,contador,
                             nodo.getOperadorString()));
@@ -198,6 +209,7 @@ public class Arbol {
                 case Nodo.TIPO_CADENA:
                     bw.write(crearContenido(idPadre, padreNombre, contador,
                             nodo.getCadena()));
+                    break;
             }
             if (!nodo.getHijos().isEmpty()) {
                 idPadre=contador;

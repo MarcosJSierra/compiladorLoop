@@ -9,6 +9,7 @@ public class Nodo {
     private int valor;
     private int seccion;
     private String cadena;
+    private int propiedad;
     private final ArrayList<Nodo> hijos;
 
     public static final int TIPO_EXPRESION=1;
@@ -16,6 +17,7 @@ public class Nodo {
     public static final int TIPO_OPERADOR=3;
     public static final int TIPO_SECCION=4;
     public static final int TIPO_CADENA=5;
+    public static final int TIPO_PROPIEDADES=6;
      
     public static final int OP_SUMA = 10;
     public static final int OP_RESTA = 11;
@@ -25,6 +27,10 @@ public class Nodo {
     public static final int SEC_INCLUDE = 41;
     public static final int SEC_CLASE = 42;
     public static final int SEC_PRINCIPAL =43;
+
+    public static final int PR_NOMBRE= 61;
+    public static final int PR_TIPO_DATO=62;
+    public static final int PR_ARG =63;
     
     
     /**
@@ -47,6 +53,9 @@ public class Nodo {
             case Nodo.TIPO_OPERADOR:
                 this.operador = valor;
                 break;
+            case Nodo.TIPO_PROPIEDADES:
+                this.propiedad=valor;
+                break;
            
         }
     }
@@ -62,8 +71,6 @@ public class Nodo {
         this.hijos = new ArrayList<>();
         this.tipo=TIPO_CADENA;
         this.cadena=valor;
-        this.operador=0;
-        this.seccion=0;
     }
     
     public Nodo() {
@@ -131,6 +138,25 @@ public class Nodo {
             {
                 return "principal";
             }
+        }
+        return "no hallado";
+    }
+    public String getPropiedadString(){
+        switch(propiedad)
+        {
+            case PR_NOMBRE:
+            {
+                return "identificador";
+            }
+            case PR_TIPO_DATO:
+            {
+                return "tipo dato";
+            }
+            case PR_ARG:
+            {
+                return "argumento";
+            }
+          
         }
         return "no hallado";
     }

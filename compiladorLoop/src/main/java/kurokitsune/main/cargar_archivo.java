@@ -243,6 +243,7 @@ public class cargar_archivo extends javax.swing.JPanel {
             cargar_archivo.salida.close();
             cargar_archivo.escribirNotificacion("Finalizando Escritura de archivo " + this.pathArchivo+".tokens\n",0 );
             cargar_archivo.escribirNotificacion("Finalizando Compilacion de archivo " + this.pathArchivo+"\n",0 );
+            cargar_archivo.escribirNotificacion("Finalizando Generación Grafo " + this.pathArchivo+".gv.jpeg"+"\n",0 );
         } catch(java.lang.Exception el){
             
         }finally{
